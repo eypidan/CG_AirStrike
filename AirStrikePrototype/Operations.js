@@ -21,11 +21,14 @@ document.addEventListener('keydown', (event) => {
     const keyName = event.key;
 
     if (keyName === 'd') {
+        lookAtX++;
+        console.log("sdfdd");
         dDown = true;
         return;
     }
     if (keyName === 'a') {
         aDown = true;
+        lookAtX--;
         return;
     }
     if (keyName === 'w') {
@@ -59,7 +62,7 @@ document.addEventListener('keyup', (event) =>{
     }
 }, false);
 
-
+export {lookAtX,lookAtY,lookAtZ};
 
 // let last_position={};
 // document.addEventListener('mousemove', (event) => {

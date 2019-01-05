@@ -243,3 +243,5 @@ function handleobj(str, obj) {
                               //利用 f x/x/x x/x/x x/x/x x/x/x 把每一个顶点按塞到新的vertex，normal，uv中，这些信息可以直接用，不用index什么的再排序
     }
 }
+
+export {getModelBufferCollection};
