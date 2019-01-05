@@ -362,9 +362,7 @@ function main() {
   
     // Tell WebGL which indices to use to index the vertices
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
-  
     // Tell WebGL to use our program when drawing
-  
     gl.useProgram(programInfo.program);
   
     // Set the shader uniforms
@@ -401,9 +399,9 @@ function main() {
     cubeRotation += deltaTime;
   }
   
-  //
-  // Initialize a shader program, so WebGL knows how to draw our data
-  //
+
+
+  
   function initShaderProgram(gl, vsSource, fsSource) {
     const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
     const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
@@ -424,11 +422,7 @@ function main() {
   
     return shaderProgram;
   }
-  
-  //
-  // creates a shader of the given type, uploads the source and
-  // compiles it.
-  //
+
   function loadShader(gl, type, source) {
     const shader = gl.createShader(type);
   
