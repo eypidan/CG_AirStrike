@@ -1,17 +1,20 @@
 // the main function
 
-import {mat4} from './gl-matrix.js';
-import {lookAtX,lookAtY,lookAtZ} from './operations.js';
 import fs from 'fs'
-import {getModelBufferCollection} from './ModelsManager.js';
+import {getModelBufferCollection,GetTextureCollection} from './ModelsManager.js';
+import {Draw} from './DrawGenericObjects.js'
+import {ObjectTrees} from './ObjectTrees';
+
+const vsSource = fs.readFileSync('./vsSource.glsl', 'utf8');
+
+const fsSource = fs.readFileSync('./fsSource.glsl', 'utf8');
+
+
 setTimeout(()=>{
     console.log("the CG_big is start!");
     main();
 
-}, 100);
-
-const vsSource = fs.readFileSync('./vsSource.glsl', 'utf8');
-const fsSource = fs.readFileSync('./fsSource.glsl', 'utf8');
+}, 100);  //这里不用理解，就是直接在js 里 执行 main（）而已，不能像原来那样在index.html onload来执行 ，注意。
 
 
 function main() {
@@ -24,15 +27,18 @@ function main() {
         alert('Unable to initialize WebGL. Your browser or machine may not support it.');
         return;
     }
-    const shaderProgram_Tex = initShaderProgram(gl, vsSource, fsSource);
+    const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
     /* Program Info is a structure where the information of the shader program
      * as well as locations of its attributes and uniforms */
     // ProgramInfo for objects that emits light (no reflection)
 
-    let ProgramInfo = GenerateProgramInfo(gl, shaderProgram_Tex);
-    let ModelBufferCollection = getModelBufferCollection(gl);       ///////// Return to be specified
-    // let TextureCollection = GetTextureCollection(gl);
-    // let Objects = ObjectTrees(ModelBufferCollection, TextureCollection);
+    let ProgramInfo = GenerateProgramInfo(gl, shaderProgram);
+    let ModelBufferCollection = getModelBufferCollection(gl);
+    let TextureCollection = GetTextureCollection(gl);
+
+    let Objects = ObjectTrees(ModelBufferCollection, TextureCollection);
+
+    console.log(ModelBufferCollection);
 
     let then = 0;
     function render(now) {
@@ -42,17 +48,16 @@ function main() {
         // console.log(lookAtX);
         // doMotion(Objects, deltaTime);
 
-        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        gl.clearColor(0.0, 0.5, 0.5, 1.0);
         gl.clearDepth(1.0);
         gl.enable(gl.DEPTH_TEST);
         gl.depthFunc(gl.LEQUAL);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-        // Draw(gl, ProgramInfo, Objects);
+        Draw(gl, ProgramInfo, Objects);
 
         requestAnimationFrame(render);
     }
-
     requestAnimationFrame(render);
 }
 
@@ -93,7 +98,7 @@ function initShaderProgram(gl, vsSource, fsSource_sun) {
 }
 
 function GenerateProgramInfo(gl, webGLPrograms) {
-    const programInfo_Textures = {
+    const programInfo = {
         program: webGLPrograms,
         attribLocations: {
             vertexPosition: gl.getAttribLocation(webGLPrograms, 'aVertexPosition'),
@@ -101,7 +106,6 @@ function GenerateProgramInfo(gl, webGLPrograms) {
             textureCoordPosition: gl.getAttribLocation(webGLPrograms, 'aTextureCoord')
         },
         uniformLocations: {
-            lightPosition: gl.getUniformLocation(webGLPrograms,'u_lightWorldPosition'), // Light Position
             projectionMatrix: gl.getUniformLocation(webGLPrograms, 'uProjectionMatrix'),
             ViewMatrix: gl.getUniformLocation(webGLPrograms, 'uViewMatrix'),
             ModelMatrix: gl.getUniformLocation(webGLPrograms, 'uModelMatrix'),
@@ -109,5 +113,6 @@ function GenerateProgramInfo(gl, webGLPrograms) {
         },
     };
 
-    return programInfo_Textures;
+    return programInfo;
 }
+

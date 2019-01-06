@@ -1,3 +1,6 @@
+import {mat4,vec3} from './gl-matrix.js';
+import {lookAtX,lookAtY,lookAtZ,eyeX,eyeY,eyeZ} from './operations.js';
+
 function Draw(gl, programInfo, Objects)
 {
     // Initialize Projection and View Matrix
@@ -16,12 +19,81 @@ function Draw(gl, programInfo, Objects)
     mat4.lookAt(ViewMatrix,
         vec3.fromValues(eyeX, eyeY, eyeZ),
         vec3.fromValues(lookAtX, lookAtY, lookAtZ),
-        vec3.fromValues(upX, upY, upZ));
+        vec3.fromValues(0,0,1)); //upX，upY这些控制的是视角的偏转，可以说，不用改，因为我们不需要把头湾一下，脖子和地面是垂直的！！！！！
 
-    let StackModelMatrix = [mat4.create()];
-    DrawGenericObject(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix, StackModelMatrix);
+    // let StackModelMatrix = [mat4.create()];  //这个操作我没看懂
+    // DrawGenericObject(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix, StackModelMatrix);
+    DrawEnv(gl,programInfo,Objects,ProjectionMatrix,ViewMatrix);
 }
+function DrawEnv(gl,programInfo,Objects,ProjectionMatrix,ViewMatrix) {
+    const scales=[1,1,1]
+    const ModelMatrix = mat4.create();
+    mat4.scale(ModelMatrix,
+        ModelMatrix,
+        scales);
+    mat4.translate(ModelMatrix,
+                ModelMatrix,
+                [0,0,0]);
+    // console.log(Objects.EnvSystem);
 
+    {
+        const numComponents = 3;
+        const type = gl.FLOAT;
+        const normalize = false;
+        const stride = 0;
+        const offset = 0;
+        gl.bindBuffer(gl.ARRAY_BUFFER, Objects.EnvSystem.Buffer.VertexBuffer);
+        gl.vertexAttribPointer(
+            programInfo.attribLocations.vertexPosition,
+            numComponents,
+            type,
+            normalize,
+            stride,
+            offset);
+        gl.enableVertexAttribArray(
+            programInfo.attribLocations.vertexPosition);
+    }
+    {
+        const numComponents = 2;
+        const type = gl.FLOAT;
+        const normalize = false;
+        const stride = 0;
+        const offset = 0;
+        gl.bindBuffer(gl.ARRAY_BUFFER, Objects.EnvSystem.Buffer.TextureBuffer);
+        gl.vertexAttribPointer(
+            programInfo.attribLocations.textureCoord,
+            numComponents,
+            type,
+            normalize,
+            stride,
+            offset);
+        gl.enableVertexAttribArray(
+            programInfo.attribLocations.textureCoord);
+    }
+
+    gl.useProgram(programInfo.program);
+    gl.uniformMatrix4fv(
+        programInfo.uniformLocations.projectionMatrix,
+        false,
+        ProjectionMatrix);
+    gl.uniformMatrix4fv(
+        programInfo.uniformLocations.ViewMatrix,
+        false,
+        ViewMatrix);
+    gl.uniformMatrix4fv(
+        programInfo.uniformLocations.ModelMatrix,
+        false,
+        ModelMatrix);
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D,Objects.EnvSystem.Texture);
+    gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
+    {
+        const vertexcount = Objects.EnvSystem.Buffer.NumVertices/3;
+        const offset = 0;
+        gl.drawArrays(gl.TRIANGLE_STRIP, offset, vertexcount);
+    }
+
+}
 function DrawGenericObject(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix, StackModelMatrix)
 {
     let lastMatrix = StackModelMatrix.pop();
@@ -203,3 +275,5 @@ function DrawBasicTexture(gl, buffers, proInfo, ProjectionMatrix, ViewMatrix, Mo
     gl.bindTexture(gl.TEXTURE_2D, Texture);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, buffers.numVertices);
 }
+
+export {Draw};

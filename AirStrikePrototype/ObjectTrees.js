@@ -9,16 +9,17 @@
  * * Luminous:      是否自发光，boolean类型
  * * Texture:       对于具有纹理的物体，保存纹理对象。如果没有则该字段为`null`
  */
+import {mat4} from './gl-matrix.js';
+
 class GenericObject{
-    constructor (Buffers, LightPos, AdjObj, Luminous, Texture)
+    constructor (Buffer, AdjObj, Texturebuffer)
     {
-        this.Buffers = Buffers;
+        this.Buffer = Buffer;
         this.MotionParameters = new MotionParameters();
         this.ModelMatrix = mat4.create();
-        this.LightPos = LightPos;
+
         this.AdjObj = AdjObj;       // Adjacent Objects (Array)
-        this.Luminous = Luminous;
-        this.Texture = Texture;
+        this.Texture = Texturebuffer;
     }
 }
 
@@ -38,20 +39,13 @@ class MotionParameters {
 function ObjectTrees(buffersCollection, texturesCollection){
     // 在这里可以建设多个太阳系
     // 每个太阳系有独特的建系方程
-    let ObjectsSystems = CreateObjectsSystem(buffersCollection, texturesCollection);                // 太阳系1（机器人1）
-    return ObjectsSystems;
+
+    // let ObjectsSystems = CreateObjectsSystem(buffersCollection, texturesCollection);                // 太阳系1（机器人1）
+    let EnvSystem = new GenericObject (buffersCollection.envModelbuffer,[],texturesCollection.envTextureBuffer); // 场景
+    return{
+        // ObjectsSystems:ObjectsSystems,
+        EnvSystem:EnvSystem
+    } ;
 }
 
-
-function CreateObjectsSystem(buffersCollection, texturesCollection)
-{
-    let ExampleModel = CreateObject(buffersCollection.ExampleModel, texturesCollection.Earth, [], false);
-    return ExampleModel;
-}
-
-function CreateObject(buffers, Texture, AdjObj, Luminous)
-{
-    let LightPos = [0, 0, 0];
-    let Object = new GenericObject(buffers, LightPos, AdjObj, Luminous, Texture);
-    return Object;
-}
+export {ObjectTrees};
