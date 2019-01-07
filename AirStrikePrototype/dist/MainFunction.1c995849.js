@@ -123,7 +123,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getModelBufferCollection = getModelBufferCollection;
 exports.GetTextureCollection = GetTextureCollection;
 
-var _env = _interopRequireDefault(require("./env.json"));
+var _env = _interopRequireDefault(require("./env"));
 
 var _floor = _interopRequireDefault(require("./Textures/floor.jpg"));
 
@@ -159,6 +159,7 @@ function getModelBufferCollection(gl) {
   var envModel = getModelFromOBJ(_env.default);
   ; // let CarModel = getModelFromOBJ("./ModelObjects/CarModel.obj");
   // let Whatever = getModelFromOBJ("./ModelObjects/whatever.obj");
+  // console.log(envModel)
 
   var env_buffer = getModelBuffer(gl, envModel);
   return {
@@ -180,7 +181,8 @@ function getModelBuffer(gl, Model) {
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(Model.vertexPos), gl.STATIC_DRAW);
   var TextureBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, TextureBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(Model.textureUV), gl.STATIC_DRAW);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(Model.textureUV), gl.STATIC_DRAW); // console.log(Model.textureUV)
+
   var NormalBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, NormalBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(Model.normalVec), gl.STATIC_DRAW);
@@ -255,7 +257,7 @@ function initTexture(gl, url) {
 function isPowerOf2(value) {
   return (value & value - 1) == 0;
 }
-},{"./env.json":"env.json","./Textures/floor.jpg":"Textures/floor.jpg"}],"gl-matrix.js":[function(require,module,exports) {
+},{"./env":"env.json","./Textures/floor.jpg":"Textures/floor.jpg"}],"gl-matrix.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -8095,13 +8097,10 @@ var eyeY = 0; //无需改变，视角高度写死
 exports.eyeY = eyeY;
 var eyeZ = 0;
 exports.eyeZ = eyeZ;
-var upX = 0;
-var upY = 1;
-var upZ = 0;
 var theat_xy = 0,
     theat_z = 0; //设置视角的角度，水平面一个，垂直一个
 
-var radin = 2; //随便设一个半径
+var radin = 10; //随便设一个半径
 // let aDown = false;   //这里不需要判断，压下去的时候自增即可
 // let sDown = false;
 // let dDown = false;
@@ -8147,7 +8146,7 @@ document.addEventListener('mousemove', function (event) {
       theat_xy += 0.05; // console.log(lookAtX);
     } else if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0) {
       //鼠标右移,控制左右视角
-      theat_xy += 0.05;
+      theat_xy -= 0.05;
     } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0) {
       theat_z += 0.05;
     } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY < 0) {
@@ -8160,9 +8159,8 @@ document.addEventListener('mousemove', function (event) {
     x: event.clientX,
     y: event.clientY
   };
-  exports.lookAtX = lookAtX = radin * Math.cos(theat_xy);
-  exports.lookAtZ = lookAtZ = radin * Math.sin(theat_xy);
-  exports.lookAtY = lookAtY = radin * Math.sin(theat_z);
+  exports.eyeX = eyeX = radin * Math.cos(theat_xy);
+  exports.eyeZ = eyeZ = radin * Math.sin(theat_xy); // lookAtY = radin*Math.sin(theat_z);
 }, false);
 },{}],"DrawGenericObjects.js":[function(require,module,exports) {
 "use strict";
@@ -8182,7 +8180,7 @@ function Draw(gl, programInfo, Objects) {
 
   var aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
   var zNear = 1;
-  var zFar = 100.0;
+  var zFar = 120.0;
 
   var ProjectionMatrix = _glMatrix.mat4.create();
 
@@ -8190,22 +8188,22 @@ function Draw(gl, programInfo, Objects) {
 
   var ViewMatrix = _glMatrix.mat4.create();
 
-  _glMatrix.mat4.lookAt(ViewMatrix, _glMatrix.vec3.fromValues(_operations.eyeX, _operations.eyeY, _operations.eyeZ), _glMatrix.vec3.fromValues(_operations.lookAtX, _operations.lookAtY, _operations.lookAtZ), _glMatrix.vec3.fromValues(0, 0, 1)); //upX，upY这些控制的是视角的偏转，可以说，不用改，因为我们不需要把头湾一下，脖子和地面是垂直的！！！！！
+  _glMatrix.mat4.lookAt(ViewMatrix, _glMatrix.vec3.fromValues(_operations.eyeX, _operations.eyeY, _operations.eyeZ), _glMatrix.vec3.fromValues(_operations.lookAtX, _operations.lookAtY, _operations.lookAtZ), _glMatrix.vec3.fromValues(0, 1, 0)); //upX，upY这些控制的是视角的偏转，可以说，不用改，因为我们不需要把头湾一下，脖子和地面是垂直的！！！！！
   // let StackModelMatrix = [mat4.create()];  //这个操作我没看懂
   // DrawGenericObject(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix, StackModelMatrix);
 
 
-  DrawEnv(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix);
+  DrawEnv(gl, programInfo, Objects.EnvSystem, ProjectionMatrix, ViewMatrix);
 }
 
-function DrawEnv(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix) {
+function DrawEnv(gl, programInfo, EnvSystem, ProjectionMatrix, ViewMatrix) {
   var scales = [1, 1, 1];
 
   var ModelMatrix = _glMatrix.mat4.create();
 
   _glMatrix.mat4.scale(ModelMatrix, ModelMatrix, scales);
 
-  _glMatrix.mat4.translate(ModelMatrix, ModelMatrix, [0, 0, 0]); // console.log(Objects.EnvSystem);
+  _glMatrix.mat4.rotate(ModelMatrix, ModelMatrix, 0.55, [0, 0, 1]); // console.log(Objects.EnvSystem);
 
 
   {
@@ -8213,8 +8211,9 @@ function DrawEnv(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix) {
     var type = gl.FLOAT;
     var normalize = false;
     var stride = 0;
-    var offset = 0;
-    gl.bindBuffer(gl.ARRAY_BUFFER, Objects.EnvSystem.Buffer.VertexBuffer);
+    var offset = 0; // console.log(Objects.EnvSystem.Buffer);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, EnvSystem.Buffer.VertexBuffer);
     gl.vertexAttribPointer(programInfo.attribLocations.vertexPosition, numComponents, type, normalize, stride, offset);
     gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
   }
@@ -8224,19 +8223,21 @@ function DrawEnv(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix) {
     var _normalize = false;
     var _stride = 0;
     var _offset = 0;
-    gl.bindBuffer(gl.ARRAY_BUFFER, Objects.EnvSystem.Buffer.TextureBuffer);
-    gl.vertexAttribPointer(programInfo.attribLocations.textureCoord, _numComponents, _type, _normalize, _stride, _offset);
-    gl.enableVertexAttribArray(programInfo.attribLocations.textureCoord);
+    gl.bindBuffer(gl.ARRAY_BUFFER, EnvSystem.Buffer.TextureBuffer); // console.log(EnvSystem.Buffer.TextureBuffer)
+
+    gl.vertexAttribPointer(programInfo.attribLocations.textureCoordPosition, _numComponents, _type, _normalize, _stride, _offset);
+    gl.enableVertexAttribArray(programInfo.attribLocations.textureCoordPosition);
   }
   gl.useProgram(programInfo.program);
   gl.uniformMatrix4fv(programInfo.uniformLocations.projectionMatrix, false, ProjectionMatrix);
   gl.uniformMatrix4fv(programInfo.uniformLocations.ViewMatrix, false, ViewMatrix);
   gl.uniformMatrix4fv(programInfo.uniformLocations.ModelMatrix, false, ModelMatrix);
   gl.activeTexture(gl.TEXTURE0);
-  gl.bindTexture(gl.TEXTURE_2D, Objects.EnvSystem.Texture);
+  gl.bindTexture(gl.TEXTURE_2D, EnvSystem.Texture); // console.log(EnvSystem.Texture);
+
   gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
   {
-    var vertexcount = Objects.EnvSystem.Buffer.NumVertices / 3;
+    var vertexcount = EnvSystem.Buffer.NumVertices / 3;
     var _offset2 = 0;
     gl.drawArrays(gl.TRIANGLE_STRIP, _offset2, vertexcount);
   }
@@ -10425,6 +10426,7 @@ function ObjectTrees(buffersCollection, texturesCollection) {
   // 每个太阳系有独特的建系方程
   // let ObjectsSystems = CreateObjectsSystem(buffersCollection, texturesCollection);                // 太阳系1（机器人1）
   var EnvSystem = new GenericObject(buffersCollection.envModelbuffer, [], texturesCollection.envTextureBuffer); // 场景
+  // console.log(EnvSystem)
 
   return {
     // ObjectsSystems:ObjectsSystems,
@@ -10445,8 +10447,8 @@ var _ObjectTrees = require("./ObjectTrees");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // the main function
-var vsSource = "attribute vec4 aVertexPosition;\r\nattribute vec3 aNormal;\r\n\r\nuniform mat4 uViewMatrix;\r\nuniform mat4 uModelMatrix;\r\nuniform mat4 uProjectionMatrix;\r\n\r\nvarying mediump vec3 Normal;\r\n\r\nattribute vec2 aTextureCoord;\r\nvarying vec2 vTextureCoord;\r\n\r\nvarying mediump vec3 FragPos2;\r\nvoid main(void) {\r\n    gl_Position = uProjectionMatrix * uViewMatrix * uModelMatrix* aVertexPosition;\r\n    vec4 modelPos = uModelMatrix * aVertexPosition;\r\n    FragPos2 = modelPos.xyz / modelPos.w;\r\n    Normal = vec3(uModelMatrix*vec4(aNormal,0.0));\r\n    vTextureCoord = aTextureCoord;\r\n}";
-var fsSource = "precision mediump float;\r\nvarying mediump vec3 Normal;\r\nvarying lowp vec2 vTextureCoord;\r\nuniform sampler2D uSampler;\r\n\r\nvarying mediump vec3 FragPos2;\r\n\r\nvec4 ambient = vec4(0.1,0.1,0.1,1.0);\r\nvec4 lightColor = vec4(1.0,1.0,1.0,0.0);\r\nvec4 diffuse;\r\nvoid main(void) {\r\n    vec3 norm = normalize(Normal);\r\n    vec3 lightDir = normalize(vec3(-1,-1,-1));\r\n    float diff = max(dot(norm, lightDir), 0.0);\r\n    diffuse = lightColor * diff;\r\n    gl_FragColor = (ambient + diffuse) * texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));\r\n}";
+var vsSource = "attribute vec4 aVertexPosition;\r\nattribute vec3 aNormal;\r\n\r\nuniform mat4 uViewMatrix;\r\nuniform mat4 uModelMatrix;\r\nuniform mat4 uProjectionMatrix;\r\n\r\nvarying mediump vec3 Normal;\r\n\r\nattribute vec2 aTextureCoord;\r\nvarying highp vec2 vTextureCoord;\r\n\r\nvarying mediump vec3 FragPos2;\r\nvoid main(void) {\r\n    gl_Position = uProjectionMatrix * uViewMatrix * uModelMatrix* aVertexPosition;\r\n    vec4 modelPos = uModelMatrix * aVertexPosition;\r\n    FragPos2 = modelPos.xyz / modelPos.w;\r\n    Normal = vec3(uModelMatrix*vec4(aNormal,0.0));\r\n    vTextureCoord = aTextureCoord;\r\n}";
+var fsSource = "precision mediump float;\r\nvarying mediump vec3 Normal;\r\nvarying highp vec2 vTextureCoord;\r\nuniform sampler2D uSampler;\r\nvarying mediump vec3 FragPos2;\r\n\r\nvec4 ambient = vec4(0.1,0.1,0.1,1.0);\r\nvec4 lightColor = vec4(1.0,1.0,1.0,0.0);\r\nvec4 diffuse;\r\n\r\nvoid main(void) {\r\n    vec3 norm = normalize(Normal);\r\n    vec3 lightDir = normalize(vec3(-1,-1,-1));\r\n    float diff = max(dot(norm, lightDir), 0.0);\r\n    diffuse = lightColor * diff;\r\n    gl_FragColor = texture2D(uSampler, vTextureCoord);\r\n}";
 setTimeout(function () {
   console.log("the CG_big is start!");
   main();
@@ -10472,8 +10474,8 @@ function main() {
   var ProgramInfo = GenerateProgramInfo(gl, shaderProgram);
   var ModelBufferCollection = (0, _ModelsManager.getModelBufferCollection)(gl);
   var TextureCollection = (0, _ModelsManager.GetTextureCollection)(gl);
-  var Objects = (0, _ObjectTrees.ObjectTrees)(ModelBufferCollection, TextureCollection);
-  console.log(ModelBufferCollection);
+  var Objects = (0, _ObjectTrees.ObjectTrees)(ModelBufferCollection, TextureCollection); // console.log(ModelBufferCollection);
+
   var then = 0;
 
   function render(now) {
@@ -10483,7 +10485,7 @@ function main() {
     then = now; // console.log(lookAtX);
     // doMotion(Objects, deltaTime);
 
-    gl.clearColor(0.0, 0.5, 0.5, 1.0);
+    gl.clearColor(1.0, 1.0, 1.0, 1.0);
     gl.clearDepth(1.0);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
@@ -10574,7 +10576,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54074" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58014" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

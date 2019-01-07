@@ -7,7 +7,7 @@ function Draw(gl, programInfo, Objects)
     const fieldOfView = 100 * Math.PI / 180;   // in radians
     const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
     const zNear = 1;
-    const zFar = 100.0;
+    const zFar = 120.0;
     const ProjectionMatrix = mat4.create();
     mat4.perspective(ProjectionMatrix,
         fieldOfView,
@@ -19,21 +19,21 @@ function Draw(gl, programInfo, Objects)
     mat4.lookAt(ViewMatrix,
         vec3.fromValues(eyeX, eyeY, eyeZ),
         vec3.fromValues(lookAtX, lookAtY, lookAtZ),
-        vec3.fromValues(0,0,1)); //upX，upY这些控制的是视角的偏转，可以说，不用改，因为我们不需要把头湾一下，脖子和地面是垂直的！！！！！
+        vec3.fromValues(0,1,0)); //upX，upY这些控制的是视角的偏转，可以说，不用改，因为我们不需要把头湾一下，脖子和地面是垂直的！！！！！
 
     // let StackModelMatrix = [mat4.create()];  //这个操作我没看懂
     // DrawGenericObject(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix, StackModelMatrix);
-    DrawEnv(gl,programInfo,Objects,ProjectionMatrix,ViewMatrix);
+    DrawEnv(gl,programInfo,Objects.EnvSystem,ProjectionMatrix,ViewMatrix);
 }
-function DrawEnv(gl,programInfo,Objects,ProjectionMatrix,ViewMatrix) {
+function DrawEnv(gl,programInfo,EnvSystem,ProjectionMatrix,ViewMatrix) {
     const scales=[1,1,1]
     const ModelMatrix = mat4.create();
     mat4.scale(ModelMatrix,
         ModelMatrix,
         scales);
-    mat4.translate(ModelMatrix,
-                ModelMatrix,
-                [0,0,0]);
+    mat4.rotate(ModelMatrix,
+                ModelMatrix,0.55,
+                [0,0,1]);
     // console.log(Objects.EnvSystem);
 
     {
@@ -42,7 +42,8 @@ function DrawEnv(gl,programInfo,Objects,ProjectionMatrix,ViewMatrix) {
         const normalize = false;
         const stride = 0;
         const offset = 0;
-        gl.bindBuffer(gl.ARRAY_BUFFER, Objects.EnvSystem.Buffer.VertexBuffer);
+        // console.log(Objects.EnvSystem.Buffer);
+        gl.bindBuffer(gl.ARRAY_BUFFER, EnvSystem.Buffer.VertexBuffer);
         gl.vertexAttribPointer(
             programInfo.attribLocations.vertexPosition,
             numComponents,
@@ -59,16 +60,17 @@ function DrawEnv(gl,programInfo,Objects,ProjectionMatrix,ViewMatrix) {
         const normalize = false;
         const stride = 0;
         const offset = 0;
-        gl.bindBuffer(gl.ARRAY_BUFFER, Objects.EnvSystem.Buffer.TextureBuffer);
+        gl.bindBuffer(gl.ARRAY_BUFFER, EnvSystem.Buffer.TextureBuffer);
+        // console.log(EnvSystem.Buffer.TextureBuffer)
         gl.vertexAttribPointer(
-            programInfo.attribLocations.textureCoord,
+            programInfo.attribLocations.textureCoordPosition,
             numComponents,
             type,
             normalize,
             stride,
             offset);
         gl.enableVertexAttribArray(
-            programInfo.attribLocations.textureCoord);
+            programInfo.attribLocations.textureCoordPosition);
     }
 
     gl.useProgram(programInfo.program);
@@ -84,11 +86,14 @@ function DrawEnv(gl,programInfo,Objects,ProjectionMatrix,ViewMatrix) {
         programInfo.uniformLocations.ModelMatrix,
         false,
         ModelMatrix);
+
     gl.activeTexture(gl.TEXTURE0);
-    gl.bindTexture(gl.TEXTURE_2D,Objects.EnvSystem.Texture);
+    gl.bindTexture(gl.TEXTURE_2D,EnvSystem.Texture);
+    // console.log(EnvSystem.Texture);
     gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
+
     {
-        const vertexcount = Objects.EnvSystem.Buffer.NumVertices/3;
+        const vertexcount = EnvSystem.Buffer.NumVertices/3;
         const offset = 0;
         gl.drawArrays(gl.TRIANGLE_STRIP, offset, vertexcount);
     }

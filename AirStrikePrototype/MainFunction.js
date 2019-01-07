@@ -38,7 +38,7 @@ function main() {
 
     let Objects = ObjectTrees(ModelBufferCollection, TextureCollection);
 
-    console.log(ModelBufferCollection);
+    // console.log(ModelBufferCollection);
 
     let then = 0;
     function render(now) {
@@ -48,7 +48,7 @@ function main() {
         // console.log(lookAtX);
         // doMotion(Objects, deltaTime);
 
-        gl.clearColor(0.0, 0.5, 0.5, 1.0);
+        gl.clearColor(1.0, 1.0, 1.0, 1.0);
         gl.clearDepth(1.0);
         gl.enable(gl.DEPTH_TEST);
         gl.depthFunc(gl.LEQUAL);

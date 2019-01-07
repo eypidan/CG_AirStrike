@@ -21,7 +21,7 @@
  * @param gl
  * @returns {{ExampleModel: {VertexBuffer: (AudioBuffer|WebGLBuffer), TextureBuffer: (AudioBuffer|WebGLBuffer), NormalBuffer: (AudioBuffer|WebGLBuffer), NumVertices: number}}}
  */
-import env from './env.json'  // !! 必须通过主文件来读取文本，所以，我只能把读好的env对象传进来
+import env from './env'  // !! 必须通过主文件来读取文本，所以，我只能把读好的env对象传进来
 import FLOOR_URL from  "./Textures/floor.jpg"
 console.log(env);
 function getModelBufferCollection(gl)
@@ -29,7 +29,7 @@ function getModelBufferCollection(gl)
     let envModel =getModelFromOBJ(env); ;
     // let CarModel = getModelFromOBJ("./ModelObjects/CarModel.obj");
     // let Whatever = getModelFromOBJ("./ModelObjects/whatever.obj");
-
+    // console.log(envModel)
     let env_buffer = getModelBuffer(gl, envModel);
     return{
         envModelbuffer: env_buffer
@@ -52,7 +52,7 @@ function getModelBuffer(gl, Model)
     const TextureBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, TextureBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(Model.textureUV), gl.STATIC_DRAW);
-
+    // console.log(Model.textureUV)
     const NormalBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, NormalBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(Model.normalVec), gl.STATIC_DRAW);

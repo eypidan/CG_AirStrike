@@ -8,7 +8,7 @@ uniform mat4 uProjectionMatrix;
 varying mediump vec3 Normal;
 
 attribute vec2 aTextureCoord;
-varying vec2 vTextureCoord;
+varying highp vec2 vTextureCoord;
 
 varying mediump vec3 FragPos2;
 void main(void) {

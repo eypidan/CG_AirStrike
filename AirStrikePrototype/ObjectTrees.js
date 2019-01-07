@@ -42,6 +42,7 @@ function ObjectTrees(buffersCollection, texturesCollection){
 
     // let ObjectsSystems = CreateObjectsSystem(buffersCollection, texturesCollection);                // 太阳系1（机器人1）
     let EnvSystem = new GenericObject (buffersCollection.envModelbuffer,[],texturesCollection.envTextureBuffer); // 场景
+    // console.log(EnvSystem)
     return{
         // ObjectsSystems:ObjectsSystems,
         EnvSystem:EnvSystem
