@@ -1,6 +1,6 @@
 import {mat4,vec3} from './gl-matrix.js';
-import {lookAtX,lookAtY,lookAtZ,eyeX,eyeY,eyeZ} from './operations.js';
-
+import {lookAt,eye,cameraUP} from './operations.js';
+let final_lookAt = vec3.create();
 function Draw(gl, programInfo, Objects)
 {
     // Initialize Projection and View Matrix
@@ -15,12 +15,13 @@ function Draw(gl, programInfo, Objects)
         zNear,
         zFar);
 
+    vec3.add(final_lookAt,eye,lookAt);
     const ViewMatrix = mat4.create();
     mat4.lookAt(ViewMatrix,
-        vec3.fromValues(eyeX, eyeY, eyeZ),
-        vec3.fromValues(lookAtX, lookAtY, lookAtZ),
-        vec3.fromValues(0,1,0)); //upX，upY这些控制的是视角的偏转，可以说，不用改，因为我们不需要把头湾一下，脖子和地面是垂直的！！！！！
-
+        eye,
+        final_lookAt,
+        cameraUP);
+    // console.log(lookAt);
     // let StackModelMatrix = [mat4.create()];  //这个操作我没看懂
     // DrawGenericObject(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix, StackModelMatrix);
     DrawEnv(gl,programInfo,Objects.EnvSystem,ProjectionMatrix,ViewMatrix);
@@ -31,9 +32,12 @@ function DrawEnv(gl,programInfo,EnvSystem,ProjectionMatrix,ViewMatrix) {
     mat4.scale(ModelMatrix,
         ModelMatrix,
         scales);
-    mat4.rotate(ModelMatrix,
-                ModelMatrix,0.55,
-                [0,0,1]);
+    mat4.translate(ModelMatrix,
+        ModelMatrix,
+        [0,0,0]);
+    // mat4.rotate(ModelMatrix,
+    //             ModelMatrix,0.55,
+    //             [0,0,1]);
     // console.log(Objects.EnvSystem);
 
     {
@@ -54,6 +58,25 @@ function DrawEnv(gl,programInfo,EnvSystem,ProjectionMatrix,ViewMatrix) {
         gl.enableVertexAttribArray(
             programInfo.attribLocations.vertexPosition);
     }
+
+    {
+        const numComponents = 3;
+        const type = gl.FLOAT;
+        const normalize = false;
+        const stride = 0;
+        const offset = 0;
+        gl.bindBuffer(gl.ARRAY_BUFFER, EnvSystem.Buffer.NormalBuffer);
+        gl.vertexAttribPointer(
+            programInfo.attribLocations.normalPosition,
+            numComponents,
+            type,
+            normalize,
+            stride,
+            offset);
+        gl.enableVertexAttribArray(
+            programInfo.attribLocations.normalPosition);
+    }
+
     {
         const numComponents = 2;
         const type = gl.FLOAT;

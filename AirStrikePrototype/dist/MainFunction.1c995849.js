@@ -8081,88 +8081,93 @@ THE SOFTWARE.
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.eyeZ = exports.eyeY = exports.eyeX = exports.lookAtZ = exports.lookAtY = exports.lookAtX = void 0;
+exports.cameraUP = exports.eye = exports.lookAt = void 0;
+
+var _glMatrix = require("./gl-matrix.js");
+
 /// Operations.js
 /// This file is about the mechanism that operates th
-var lookAtX = 0;
-exports.lookAtX = lookAtX;
-var lookAtY = 0;
-exports.lookAtY = lookAtY;
-var lookAtZ = 0;
-exports.lookAtZ = lookAtZ;
-var eyeX = 0;
-exports.eyeX = eyeX;
-var eyeY = 0; //无需改变，视角高度写死
+var lookAt = [0, 0, -1];
+exports.lookAt = lookAt;
+var eye = [0, 2, 3];
+exports.eye = eye;
+var cameraUP = [0, 1, 0];
+exports.cameraUP = cameraUP;
 
-exports.eyeY = eyeY;
-var eyeZ = 0;
-exports.eyeZ = eyeZ;
-var theat_xy = 0,
-    theat_z = 0; //设置视角的角度，水平面一个，垂直一个
+var test = _glMatrix.vec3.create(); //作为接受vec3.multiply的结果的一个向量而已
+
+
+var test2 = _glMatrix.vec3.create();
+
+var test3 = _glMatrix.vec3.create();
+
+var CameraSpeed = [0.2, 0.2, 0.2];
+var pitch = 0,
+    yaw = 0; //设置视角的角度，水平面一个，垂直一个
 
 var radin = 10; //随便设一个半径
-// let aDown = false;   //这里不需要判断，压下去的时候自增即可
-// let sDown = false;
-// let dDown = false;
-// let wDown = false;
 
 document.addEventListener('keydown', function (event) {
   var keyName = event.key;
 
-  if (keyName === 'd') {
-    exports.eyeX = eyeX = eyeX + 1; // console.log(lookAtX++);
+  if (keyName === 'a') {
+    _glMatrix.vec3.cross(test2, eye, cameraUP);
+
+    _glMatrix.vec3.add(eye, eye, _glMatrix.vec3.multiply(test3, test2, CameraSpeed));
 
     return;
   }
 
-  if (keyName === 'a') {
-    // aDown = true;
-    exports.eyeX = eyeX = eyeX - 1;
+  if (keyName === 'd') {
+    _glMatrix.vec3.cross(test2, eye, cameraUP);
+
+    _glMatrix.vec3.sub(eye, eye, _glMatrix.vec3.multiply(test3, test2, CameraSpeed));
+
     return;
   }
 
   if (keyName === 'w') {
-    exports.eyeZ = eyeZ = eyeZ + 1; // wDown = true;
+    _glMatrix.vec3.add(eye, eye, _glMatrix.vec3.multiply(test, lookAt, CameraSpeed));
 
     return;
   }
 
   if (keyName === 's') {
-    // sDown = true;
-    exports.eyeZ = eyeZ = eyeZ - 1;
+    _glMatrix.vec3.sub(eye, eye, _glMatrix.vec3.multiply(test, lookAt, CameraSpeed));
+
     return;
   }
 }, false);
 var last_position = {};
 document.addEventListener('mousemove', function (event) {
-  //check to make sure there is data to compare against
   if (typeof last_position.x != "undefined") {
-    //get the change from last position to this position
-    var deltaX = last_position.x - event.clientX,
-        deltaY = last_position.y - event.clientY;
+    var deltaX = -last_position.x + event.clientX,
+        deltaY = -last_position.y + event.clientY;
 
     if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0) {
-      //鼠标左移,控制左右视角
-      theat_xy += 0.05; // console.log(lookAtX);
+      yaw += 0.1;
     } else if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0) {
-      //鼠标右移,控制左右视角
-      theat_xy -= 0.05;
+      yaw -= 0.1;
     } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0) {
-      theat_z += 0.05;
+      pitch -= 0.1;
     } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY < 0) {
-      //上下视角
-      theat_z -= 0.05;
+      pitch += 0.1;
     }
+
+    if (pitch > Math.PI / 2 - 0.01) pitch = Math.PI / 2 - 0.01;
+    if (pitch < -Math.PI / 2 + 0.01) pitch = -Math.PI / 2 + 0.01;
   }
 
   last_position = {
     x: event.clientX,
     y: event.clientY
   };
-  exports.eyeX = eyeX = radin * Math.cos(theat_xy);
-  exports.eyeZ = eyeZ = radin * Math.sin(theat_xy); // lookAtY = radin*Math.sin(theat_z);
+  lookAt[0] = Math.cos(pitch) * Math.cos(yaw);
+  lookAt[1] = Math.sin(pitch);
+  lookAt[2] = Math.cos(pitch) * Math.sin(yaw);
+  console.log(pitch);
 }, false);
-},{}],"DrawGenericObjects.js":[function(require,module,exports) {
+},{"./gl-matrix.js":"gl-matrix.js"}],"DrawGenericObjects.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8173,6 +8178,8 @@ exports.Draw = Draw;
 var _glMatrix = require("./gl-matrix.js");
 
 var _operations = require("./operations.js");
+
+var final_lookAt = _glMatrix.vec3.create();
 
 function Draw(gl, programInfo, Objects) {
   // Initialize Projection and View Matrix
@@ -8186,9 +8193,11 @@ function Draw(gl, programInfo, Objects) {
 
   _glMatrix.mat4.perspective(ProjectionMatrix, fieldOfView, aspect, zNear, zFar);
 
+  _glMatrix.vec3.add(final_lookAt, _operations.eye, _operations.lookAt);
+
   var ViewMatrix = _glMatrix.mat4.create();
 
-  _glMatrix.mat4.lookAt(ViewMatrix, _glMatrix.vec3.fromValues(_operations.eyeX, _operations.eyeY, _operations.eyeZ), _glMatrix.vec3.fromValues(_operations.lookAtX, _operations.lookAtY, _operations.lookAtZ), _glMatrix.vec3.fromValues(0, 1, 0)); //upX，upY这些控制的是视角的偏转，可以说，不用改，因为我们不需要把头湾一下，脖子和地面是垂直的！！！！！
+  _glMatrix.mat4.lookAt(ViewMatrix, _operations.eye, final_lookAt, _operations.cameraUP); // console.log(lookAt);
   // let StackModelMatrix = [mat4.create()];  //这个操作我没看懂
   // DrawGenericObject(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix, StackModelMatrix);
 
@@ -8203,7 +8212,10 @@ function DrawEnv(gl, programInfo, EnvSystem, ProjectionMatrix, ViewMatrix) {
 
   _glMatrix.mat4.scale(ModelMatrix, ModelMatrix, scales);
 
-  _glMatrix.mat4.rotate(ModelMatrix, ModelMatrix, 0.55, [0, 0, 1]); // console.log(Objects.EnvSystem);
+  _glMatrix.mat4.translate(ModelMatrix, ModelMatrix, [0, 0, 0]); // mat4.rotate(ModelMatrix,
+  //             ModelMatrix,0.55,
+  //             [0,0,1]);
+  // console.log(Objects.EnvSystem);
 
 
   {
@@ -8218,14 +8230,24 @@ function DrawEnv(gl, programInfo, EnvSystem, ProjectionMatrix, ViewMatrix) {
     gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
   }
   {
-    var _numComponents = 2;
+    var _numComponents = 3;
     var _type = gl.FLOAT;
     var _normalize = false;
     var _stride = 0;
     var _offset = 0;
+    gl.bindBuffer(gl.ARRAY_BUFFER, EnvSystem.Buffer.NormalBuffer);
+    gl.vertexAttribPointer(programInfo.attribLocations.normalPosition, _numComponents, _type, _normalize, _stride, _offset);
+    gl.enableVertexAttribArray(programInfo.attribLocations.normalPosition);
+  }
+  {
+    var _numComponents2 = 2;
+    var _type2 = gl.FLOAT;
+    var _normalize2 = false;
+    var _stride2 = 0;
+    var _offset2 = 0;
     gl.bindBuffer(gl.ARRAY_BUFFER, EnvSystem.Buffer.TextureBuffer); // console.log(EnvSystem.Buffer.TextureBuffer)
 
-    gl.vertexAttribPointer(programInfo.attribLocations.textureCoordPosition, _numComponents, _type, _normalize, _stride, _offset);
+    gl.vertexAttribPointer(programInfo.attribLocations.textureCoordPosition, _numComponents2, _type2, _normalize2, _stride2, _offset2);
     gl.enableVertexAttribArray(programInfo.attribLocations.textureCoordPosition);
   }
   gl.useProgram(programInfo.program);
@@ -8238,8 +8260,8 @@ function DrawEnv(gl, programInfo, EnvSystem, ProjectionMatrix, ViewMatrix) {
   gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
   {
     var vertexcount = EnvSystem.Buffer.NumVertices / 3;
-    var _offset2 = 0;
-    gl.drawArrays(gl.TRIANGLES, _offset2, vertexcount);
+    var _offset3 = 0;
+    gl.drawArrays(gl.TRIANGLES, _offset3, vertexcount);
   }
 }
 
@@ -10448,7 +10470,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // the main function
 var vsSource = "attribute vec4 aVertexPosition;\r\nattribute vec3 aNormal;\r\n\r\nuniform mat4 uViewMatrix;\r\nuniform mat4 uModelMatrix;\r\nuniform mat4 uProjectionMatrix;\r\n\r\nvarying mediump vec3 Normal;\r\n\r\nattribute vec2 aTextureCoord;\r\nvarying highp vec2 vTextureCoord;\r\n\r\nvarying mediump vec3 FragPos2;\r\nvoid main(void) {\r\n    gl_Position = uProjectionMatrix * uViewMatrix * uModelMatrix* aVertexPosition;\r\n    vec4 modelPos = uModelMatrix * aVertexPosition;\r\n    FragPos2 = modelPos.xyz / modelPos.w;\r\n    Normal = vec3(uModelMatrix*vec4(aNormal,0.0));\r\n    vTextureCoord = aTextureCoord;\r\n}";
-var fsSource = "precision mediump float;\r\nvarying mediump vec3 Normal;\r\nvarying highp vec2 vTextureCoord;\r\nuniform sampler2D uSampler;\r\nvarying mediump vec3 FragPos2;\r\n\r\nvec4 ambient = vec4(0.1,0.1,0.1,1.0);\r\nvec4 lightColor = vec4(1.0,1.0,1.0,0.0);\r\nvec4 diffuse;\r\n\r\nvoid main(void) {\r\n    vec3 norm = normalize(Normal);\r\n    vec3 lightDir = normalize(vec3(-1,-1,-1));\r\n    float diff = max(dot(norm, lightDir), 0.0);\r\n    diffuse = lightColor * diff;\r\n    gl_FragColor = texture2D(uSampler, vTextureCoord);\r\n}";
+var fsSource = "precision mediump float;\r\nvarying mediump vec3 Normal;\r\nvarying highp vec2 vTextureCoord;\r\nuniform sampler2D uSampler;\r\nvarying mediump vec3 FragPos2;\r\n\r\nvec4 ambient = vec4(0.4,0.4,0.4,1.0);\r\nvec4 lightColor = vec4(1.0,1.0,1.0,0.0);\r\nvec4 diffuse;\r\n\r\nvoid main(void) {\r\n    vec3 norm = normalize(Normal);\r\n    vec3 lightDir = normalize(vec3(-0.5,-0.5,-0.5));\r\n    float diff = max(dot(norm, lightDir), 0.0);\r\n    diffuse = lightColor * diff;\r\n\r\n    vec4 Texturecolor = texture2D(uSampler, vTextureCoord);\r\n    gl_FragColor =Texturecolor*(vec4(diff)+ambient);\r\n}";
 setTimeout(function () {
   console.log("the CG_big is start!");
   main();
@@ -10576,7 +10598,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59488" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63752" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
