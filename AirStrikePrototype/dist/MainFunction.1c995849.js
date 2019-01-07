@@ -8239,7 +8239,7 @@ function DrawEnv(gl, programInfo, EnvSystem, ProjectionMatrix, ViewMatrix) {
   {
     var vertexcount = EnvSystem.Buffer.NumVertices / 3;
     var _offset2 = 0;
-    gl.drawArrays(gl.TRIANGLE_STRIP, _offset2, vertexcount);
+    gl.drawArrays(gl.TRIANGLES, _offset2, vertexcount);
   }
 }
 
@@ -10576,7 +10576,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58014" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59488" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

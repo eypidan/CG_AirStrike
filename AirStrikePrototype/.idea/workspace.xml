@@ -3,22 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="38290ccb-53fd-4c7c-9547-4581a7d4f8df" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.cache/04/2f708240b6259935bb5cbb5d99dd75.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/04/2f708240b6259935bb5cbb5d99dd75.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cache/98/a78779d5d51d2528935da7606713c8.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/98/a78779d5d51d2528935da7606713c8.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cache/bb/b1b27722c0873e8791488b2bd3f392.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/bb/b1b27722c0873e8791488b2bd3f392.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.cache/ca/6df28b58ed7ee51c5e783503577578.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/ca/6df28b58ed7ee51c5e783503577578.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cache/ca/74da70135fa91523c0d4aa1d6d444e.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/ca/74da70135fa91523c0d4aa1d6d444e.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.cache/e4/5b344a3e645bf1581812ecd4575d17.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/e4/5b344a3e645bf1581812ecd4575d17.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DrawGenericObjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/DrawGenericObjects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/MainFunction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModelsManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/ModelsManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectTrees.js" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectTrees.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Operations.js" beforeDir="false" afterPath="$PROJECT_DIR$/Operations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/MainFunction.1c995849.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/MainFunction.1c995849.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/MainFunction.1c995849.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/MainFunction.1c995849.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fsSource.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/fsSource.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vsSource.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/vsSource.glsl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,7 +41,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ModelsManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-286">
+            <state relative-caret-position="-484">
               <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -59,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DrawGenericObjects.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+            <state relative-caret-position="418">
+              <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="n#!!block;n#DrawGenericObject#0" />
@@ -75,10 +66,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/convert_obj_to_json.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-968">
+              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fsSource.glsl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="352">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -196,9 +196,9 @@
         <option value="$PROJECT_DIR$/vsSource.glsl" />
         <option value="$PROJECT_DIR$/ObjectTrees.js" />
         <option value="$PROJECT_DIR$/MainFunction.js" />
-        <option value="$PROJECT_DIR$/fsSource.glsl" />
         <option value="$PROJECT_DIR$/ModelsManager.js" />
         <option value="$PROJECT_DIR$/DrawGenericObjects.js" />
+        <option value="$PROJECT_DIR$/fsSource.glsl" />
       </list>
     </option>
   </component>
@@ -210,10 +210,10 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="678" />
-    <option name="y" value="-1088" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="3026" />
+    <option name="height" value="2026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -311,12 +311,12 @@
       <workItem from="1546675101140" duration="15215000" />
       <workItem from="1546743355498" duration="7595000" />
       <workItem from="1546761791637" duration="4816000" />
-      <workItem from="1546833975777" duration="5075000" />
+      <workItem from="1546833975777" duration="6918000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151859000" />
+    <option name="totallyTimeSpent" value="153702000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -329,9 +329,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="678" y="-1088" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.71088433" visible="true" weight="0.09799789" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.71088433" visible="true" weight="0.09799789" />
       <window_info id="Structure" order="1" weight="0.24954791" />
       <window_info id="Favorites" order="2" sideWeight="0.28911564" side_tool="true" weight="0.16926202" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -342,7 +341,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32901832" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32879817" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.23804574" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.23804574" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50297177" side_tool="true" weight="0.3272727" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="11" weight="0.32993197" />
@@ -511,13 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/convert_obj_to_json.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1961">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/MainFunction.1c995849.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4922">
@@ -536,13 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6178">
           <caret line="1647" selection-start-line="1647" selection-end-line="1647" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vsSource.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -570,6 +555,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ModelsManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-484">
+          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DrawGenericObjects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#DrawGenericObject#0" />
+            <element signature="n#!!block;n#DrawBasic#0" />
+            <element signature="n#!!block;n#DrawBasicTexture#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/convert_obj_to_json.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-968">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vsSource.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MainFunction.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1232">
@@ -584,30 +606,7 @@
     <entry file="file://$PROJECT_DIR$/fsSource.glsl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ModelsManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DrawGenericObjects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#!!block;n#DrawGenericObject#0" />
-            <element signature="n#!!block;n#DrawBasic#0" />
-            <element signature="n#!!block;n#DrawBasicTexture#0" />
-          </folding>
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
         </state>
       </provider>
     </entry>

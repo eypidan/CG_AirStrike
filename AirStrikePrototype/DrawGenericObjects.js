@@ -95,7 +95,7 @@ function DrawEnv(gl,programInfo,EnvSystem,ProjectionMatrix,ViewMatrix) {
     {
         const vertexcount = EnvSystem.Buffer.NumVertices/3;
         const offset = 0;
-        gl.drawArrays(gl.TRIANGLE_STRIP, offset, vertexcount);
+        gl.drawArrays(gl.TRIANGLES, offset, vertexcount);
     }
 
 }
