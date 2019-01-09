@@ -1,44 +1,43 @@
 /// Operations.js
 /// This file is about the mechanism that operates th
+import {vec3} from './gl-matrix.js'
+var lookAt = [0,0,-1];
+var eye = [0,2,3];
+var cameraUP = [0,1,0];
 
-var lookAtX = 0;
-var lookAtY = 0;
-var lookAtZ = 0;
-var eyeX = 0;
-const eyeY = 0;  //无需改变，视角高度写死
-var eyeZ = 0;
+var test=vec3.create(); //作为接受vec3.multiply的结果的一个向量而已
+var test2 = vec3.create();
+var test3 = vec3.create();
+var CameraSpeed = [0.2,0.2,0.2]
+var pitch=0, yaw=0; //设置视角的角度，水平面一个，垂直一个
 
-var theat_xy=0,theat_z=0; //设置视角的角度，水平面一个，垂直一个
-const radin = 10; //随便设一个半径
-// let aDown = false;   //这里不需要判断，压下去的时候自增即可
-// let sDown = false;
-// let dDown = false;
-// let wDown = false;
+// const radin = 10; //随便设一个半径
 
 
 document.addEventListener('keydown', (event) => {
     const keyName = event.key;
 
-    if (keyName === 'd') {
-        eyeX++;
-        // console.log(lookAtX++);
+    if (keyName === 'a') {
+        vec3.cross(test2,eye,cameraUP);
+        vec3.add(eye,eye,vec3.multiply(test3,test2,CameraSpeed));
+
         return;
     }
-    if (keyName === 'a') {
-        // aDown = true;
-        eyeX--;
+    if (keyName === 'd') {
+        vec3.cross(test2,eye,cameraUP);
+        vec3.sub(eye,eye,vec3.multiply(test3,test2,CameraSpeed));
         return;
     }
     if (keyName === 'w') {
-        eyeZ++;
-        // wDown = true;
+        vec3.add(eye,eye,vec3.multiply(test,lookAt,CameraSpeed));
         return;
     }
     if (keyName === 's') {
-        // sDown = true;
-        eyeZ--;
+        vec3.sub(eye,eye,vec3.multiply(test,lookAt,CameraSpeed));
         return;
     }
+
+
 }, false);
 
 
@@ -46,29 +45,33 @@ document.addEventListener('keydown', (event) => {
 
 let last_position={};
 document.addEventListener('mousemove', (event) => {
-    //check to make sure there is data to compare against
+
     if (typeof(last_position.x) !="undefined" ) {
-        //get the change from last position to this position
-        var deltaX = last_position.x - event.clientX,
-            deltaY = last_position.y - event.clientY;
-        if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0) { //鼠标左移,控制左右视角
-            theat_xy+= 0.05;
-            // console.log(lookAtX);
-        } else if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0) {  //鼠标右移,控制左右视角
-            theat_xy-= 0.05;
-        } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0) {
-            theat_z += 0.05;
-        } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY < 0) {  //上下视角
-            theat_z -= 0.05;
+
+        var deltaX = -last_position.x + event.clientX,
+            deltaY = -last_position.y + event.clientY;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0) {
+            yaw+=0.1;
+        }else if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0) {
+            yaw-=0.1;
+        }else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0) {
+            pitch-=0.1;
+        }else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY < 0) {
+            pitch+=0.1;
         }
+        if(pitch>Math.PI/2-0.01) pitch=Math.PI/2-0.01;
+        if(pitch<-Math.PI/2+0.01) pitch=-Math.PI/2+0.01;
     }
     last_position = {
         x : event.clientX,
         y : event.clientY
     };
-    eyeX = radin*Math.cos(theat_xy);
-    eyeZ = radin*Math.sin(theat_xy);
-    // lookAtY = radin*Math.sin(theat_z);
+    lookAt[0]=Math.cos(pitch)*Math.cos(yaw);
+    lookAt[1]=Math.sin(pitch);
+    lookAt[2]=Math.cos(pitch)*Math.sin(yaw);
+    console.log(pitch);
+
 }, false);
 
-export {lookAtX,lookAtY,lookAtZ,eyeX,eyeY,eyeZ};
+export {lookAt,eye,cameraUP};

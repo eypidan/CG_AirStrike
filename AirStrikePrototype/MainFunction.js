@@ -9,13 +9,11 @@ const vsSource = fs.readFileSync('./vsSource.glsl', 'utf8');
 
 const fsSource = fs.readFileSync('./fsSource.glsl', 'utf8');
 
-
+//这里不用理解，就是直接在js 里 执行 main（）而已，不能像原来那样在index.html onload来执行 ，注意。
 setTimeout(()=>{
-    console.log("the CG_big is start!");
+    console.log("AirStrike Alert!");
     main();
-
-}, 100);  //这里不用理解，就是直接在js 里 执行 main（）而已，不能像原来那样在index.html onload来执行 ，注意。
-
+}, 100);
 
 function main() {
     /******************************

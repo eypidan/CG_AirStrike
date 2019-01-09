@@ -2,14 +2,78 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38290ccb-53fd-4c7c-9547-4581a7d4f8df" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.cache/01/3137566af47a1a31f62cc025b167b4.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/01/3137566af47a1a31f62cc025b167b4.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.cache/04/2f708240b6259935bb5cbb5d99dd75.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/04/2f708240b6259935bb5cbb5d99dd75.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/0a/f52eb66937df768fdbf08d45053817.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/0a/f52eb66937df768fdbf08d45053817.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/0e/6409a4e70d52e4372f1c90f826efe9.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/0e/6409a4e70d52e4372f1c90f826efe9.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/1e/ac8d0716d1b45bf957b538d3bdd814.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/1e/ac8d0716d1b45bf957b538d3bdd814.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/28/b889a53aaa5306fdea6974c24b4b7d.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/28/b889a53aaa5306fdea6974c24b4b7d.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/58/4dc98b14b8ee545cb235c1f7170df8.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/58/4dc98b14b8ee545cb235c1f7170df8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/5b/dd1edf521fe497e5eed78281786087.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/5b/dd1edf521fe497e5eed78281786087.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/64/39369a5bb3cb442374b23b10cfd986.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/64/39369a5bb3cb442374b23b10cfd986.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/98/a78779d5d51d2528935da7606713c8.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/98/a78779d5d51d2528935da7606713c8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/a6/72777b06d9b0b98d8d8a2dd285b4cc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/a6/72777b06d9b0b98d8d8a2dd285b4cc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/ba/c2de5915eebd9598042079f339eb9c.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/ba/c2de5915eebd9598042079f339eb9c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/bb/b1b27722c0873e8791488b2bd3f392.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/bb/b1b27722c0873e8791488b2bd3f392.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/c5/a5cc736dd51c6904950a209e9e97dd.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/c5/a5cc736dd51c6904950a209e9e97dd.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.cache/ca/6df28b58ed7ee51c5e783503577578.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/ca/6df28b58ed7ee51c5e783503577578.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/ca/74da70135fa91523c0d4aa1d6d444e.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/ca/74da70135fa91523c0d4aa1d6d444e.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/d8/7266f7896a19bec8c5ca46ab55794c.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/d8/7266f7896a19bec8c5ca46ab55794c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/d9/61879de82f99cd46483b5aae95aece.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/d9/61879de82f99cd46483b5aae95aece.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.cache/e4/5b344a3e645bf1581812ecd4575d17.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/e4/5b344a3e645bf1581812ecd4575d17.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/e6/4f79ac17ec36c32ea0e46e1d220741.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/e6/4f79ac17ec36c32ea0e46e1d220741.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cache/e6/a6d647916c2b12096dd0ce63b056fd.json" beforeDir="false" afterPath="$PROJECT_DIR$/.cache/e6/a6d647916c2b12096dd0ce63b056fd.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AirStrikePrototype.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AirStrikePrototype.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deprecated Codes/Draw.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DrawGenericObjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/DrawGenericObjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/MainFunction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModelObjects/CarModel.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModelObjects/Example.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModelObjects/Example1.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModelsManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/ModelsManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Motion.js" beforeDir="false" afterPath="$PROJECT_DIR$/Motion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectTrees.js" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectTrees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Operations.js" beforeDir="false" afterPath="$PROJECT_DIR$/Operations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Textures/Earth.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Textures/Earth.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Textures/SkyBox.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Textures/SkyBox.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Textures/floor.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Textures/floor.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Textures/sky.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Textures/sky.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Textures/sun.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Textures/sun.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ReadMe.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_ReadMe.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convert_obj_to_json.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/DrawGenericObjects.00269a8e.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/DrawGenericObjects.00269a8e.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/DrawGenericObjects.00269a8e.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/DrawGenericObjects.00269a8e.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/MainFunction.1c995849.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/MainFunction.1c995849.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/MainFunction.1c995849.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/MainFunction.1c995849.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ModelsManager.4201be9d.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ModelsManager.4201be9d.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ModelsManager.4201be9d.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ModelsManager.4201be9d.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Motion.9640926e.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Motion.9640926e.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Motion.9640926e.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Motion.9640926e.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ObjectTrees.5c3b1b59.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ObjectTrees.5c3b1b59.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ObjectTrees.5c3b1b59.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ObjectTrees.5c3b1b59.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Operations.4d9b166d.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Operations.4d9b166d.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Operations.4d9b166d.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Operations.4d9b166d.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/floor.33debc88.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/dist/floor.33debc88.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/gl-matrix.2c214d66.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gl-matrix.2c214d66.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/gl-matrix.2c214d66.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gl-matrix.2c214d66.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/sun.d5318678.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/dist/sun.d5318678.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/env.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enviroment.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fsSource.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/fsSource.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gl-matrix.js" beforeDir="false" afterPath="$PROJECT_DIR$/gl-matrix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sun.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sun_obj.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vsSource.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/vsSource.glsl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,16 +84,87 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="690253814">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="glsl" value="5" />
+          <entry key="html" value="1" />
+          <entry key="jpg" value="2" />
+          <entry key="js" value="10" />
+          <entry key="json" value="2" />
+          <entry key="md" value="2" />
+          <entry key="obj" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="GLSL shader file" value="4" />
+          <entry key="HTML" value="1" />
+          <entry key="Image" value="2" />
+          <entry key="JSON" value="2" />
+          <entry key="JavaScript" value="9" />
+          <entry key="Markdown" value="2" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="Scratch" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="glsl" value="6" />
+          <entry key="js" value="1762" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="GLSL shader file" value="6" />
+          <entry key="JavaScript" value="1762" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="AirStrikePrototype" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DrawGenericObjects.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="30" column="81" selection-start-line="30" selection-start-column="81" selection-end-line="30" selection-end-column="81" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ObjectTrees.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="721">
+              <caret line="58" column="1" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
+              <folding>
+                <element signature="e#390#426#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainFunction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1232">
-              <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+            <state>
+              <caret column="20" selection-start-column="20" selection-end-column="20" />
               <folding>
                 <element signature="e#22#41#0" expanded="true" />
                 <element signature="n#!!block;n#initShaderProgram#0" />
@@ -39,55 +174,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ModelsManager.js">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-484">
-              <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DrawGenericObjects.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-                <element signature="n#!!block;n#DrawGenericObject#0" />
-                <element signature="n#!!block;n#DrawBasic#0" />
-                <element signature="n#!!block;n#DrawBasicTexture#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/convert_obj_to_json.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-968">
-              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fsSource.glsl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vsSource.glsl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+            <state relative-caret-position="360">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -95,8 +185,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Operations.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="53" column="53" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+            <state relative-caret-position="309">
+              <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -105,10 +195,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ObjectTrees.js">
+        <entry file="file://$PROJECT_DIR$/ModelsManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1034">
-              <caret line="47" column="17" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="17" />
+            <state relative-caret-position="-425">
+              <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#998#1050#0" expanded="true" />
+                <element signature="e#1269#1315#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,7 +211,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Motion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="348">
               <caret line="39" column="47" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="47" />
             </state>
           </provider>
@@ -133,11 +228,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>uv</find>
-      <find>normal</find>
-      <find>path</find>
-      <find>ProgramInfo</find>
-      <find>file</find>
       <find>fi</find>
       <find>DrawBasicTexture</find>
       <find>StackModelMatrix</find>
@@ -163,6 +253,11 @@
       <find>initTexture</find>
       <find>uSampler</find>
       <find>envTextureBuffer</find>
+      <find>Env</find>
+      <find>lookAt</find>
+      <find>create</find>
+      <find>speed</find>
+      <find>vec</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,16 +287,18 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/convert_obj_2_json.js" />
         <option value="$PROJECT_DIR$/convert_obj_to_json.js" />
-        <option value="$PROJECT_DIR$/Operations.js" />
-        <option value="$PROJECT_DIR$/vsSource.glsl" />
-        <option value="$PROJECT_DIR$/ObjectTrees.js" />
-        <option value="$PROJECT_DIR$/MainFunction.js" />
         <option value="$PROJECT_DIR$/ModelsManager.js" />
-        <option value="$PROJECT_DIR$/DrawGenericObjects.js" />
+        <option value="$PROJECT_DIR$/vsSource.glsl" />
         <option value="$PROJECT_DIR$/fsSource.glsl" />
+        <option value="$PROJECT_DIR$/MainFunction.js" />
+        <option value="$PROJECT_DIR$/Operations.js" />
+        <option value="$PROJECT_DIR$/DrawGenericObjects.js" />
+        <option value="$PROJECT_DIR$/ObjectTrees.js" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsFlowSettings">
     <service-enabled>false</service-enabled>
     <exe-path />
@@ -209,11 +306,13 @@
     <other-services-enabled>false</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-12" />
-    <option name="y" value="-12" />
-    <option name="width" value="3026" />
-    <option name="height" value="2026" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -223,6 +322,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -230,16 +330,10 @@
               <item name="AirStrikePrototype" type="b2602c69:ProjectViewProjectNode" />
               <item name="AirStrikePrototype" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="AirStrikePrototype" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirStrikePrototype" type="462c0819:PsiDirectoryNode" />
-              <item name="Textures" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -272,13 +366,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Node.js.fuckkkkkk">
-    <configuration name="Unnamed" type="JavascriptDebugType" uri="http://localhost:8000">
+    <configuration name="Unnamed" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost:8000">
       <method v="2" />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" uri="http://localhost:8000">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost:8000">
       <method v="2" />
     </configuration>
-    <configuration name="fuckkkkkk" type="NodeJSConfigurationType" working-dir="$PROJECT_DIR$">
+    <configuration name="fuckkkkkk" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <list>
@@ -312,11 +406,15 @@
       <workItem from="1546743355498" duration="7595000" />
       <workItem from="1546761791637" duration="4816000" />
       <workItem from="1546833975777" duration="6918000" />
+      <workItem from="1546847776523" duration="5980000" />
+      <workItem from="1546870673136" duration="6151000" />
+      <workItem from="1547023367328" duration="3802000" />
+      <workItem from="1547030232092" duration="8040000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153702000" />
+    <option name="totallyTimeSpent" value="177675000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -328,20 +426,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="678" y="-1088" width="1936" height="1096" extended-state="6" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.71088433" visible="true" weight="0.09799789" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.71088433" visible="true" weight="0.14948764" />
       <window_info id="Structure" order="1" weight="0.24954791" />
       <window_info id="Favorites" order="2" sideWeight="0.28911564" side_tool="true" weight="0.16926202" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49702823" weight="0.32640332" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32993197" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32959184" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3956916" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32901832" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32879817" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.23804574" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32857144" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.12244898" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50297177" side_tool="true" weight="0.3272727" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="11" weight="0.32993197" />
@@ -350,7 +449,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.71088433" visible="true" weight="0.13171759" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.71088433" visible="true" weight="0.14962763" />
       <window_info id="Structure" order="1" weight="0.24954791" />
       <window_info id="Favorites" order="2" sideWeight="0.28911564" side_tool="true" weight="0.16926202" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -361,7 +460,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32901832" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32879817" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.13409564" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.23809524" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50297177" side_tool="true" weight="0.3272727" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="11" weight="0.32993197" />
@@ -372,6 +471,35 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -385,21 +513,6 @@
           <url>file://$PROJECT_DIR$/Deprecated Codes/Draw.js</url>
           <line>88</line>
           <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/MainFunction.js</url>
-          <line>44</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/convert_obj_to_json.js</url>
-          <line>98</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/convert_obj_to_json.js</url>
-          <line>1</line>
-          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -466,14 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/进度.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -484,118 +589,75 @@
     <entry file="file://$PROJECT_DIR$/Textures/SkyBox.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/convert_obj_2_json" />
-    <entry file="file://$PROJECT_DIR$/../../zju_works/2018-2019_CG/newsolar/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#72#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../zju_works/2018-2019_CG/newsolar/index.js" />
     <entry file="file://$PROJECT_DIR$/convert_obj_2_json.js" />
-    <entry file="file://$PROJECT_DIR$/env.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27888" selection-start-column="27888" selection-end-column="27888" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/env.json" />
     <entry file="file://$PROJECT_DIR$/dist/MainFunction.1c995849.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4922">
           <caret line="7820" column="282" selection-start-line="7820" selection-start-column="269" selection-end-line="7820" selection-end-column="282" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gl-matrix.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6178">
-          <caret line="1647" selection-start-line="1647" selection-end-line="1647" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sun.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/convert_obj_to_json.js" />
+    <entry file="file://$PROJECT_DIR$/进度.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="225">
+            <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Operations.js">
+    <entry file="file://$PROJECT_DIR$/Textures/Earth.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enviroment.obj">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fsSource.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="53" column="53" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Motion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="348">
           <caret line="39" column="47" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ObjectTrees.js">
+    <entry file="file://$PROJECT_DIR$/gl-matrix.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1034">
-          <caret line="47" column="17" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ModelsManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-484">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DrawGenericObjects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#!!block;n#DrawGenericObject#0" />
-            <element signature="n#!!block;n#DrawBasic#0" />
-            <element signature="n#!!block;n#DrawBasicTexture#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/convert_obj_to_json.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-968">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        <state relative-caret-position="24705">
+          <caret line="1647" selection-start-line="1647" selection-end-line="1647" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vsSource.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+        <state>
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sun_obj.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/MainFunction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1232">
-          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+        <state>
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
           <folding>
             <element signature="e#22#41#0" expanded="true" />
             <element signature="n#!!block;n#initShaderProgram#0" />
@@ -603,10 +665,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fsSource.glsl">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        <state relative-caret-position="360">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Operations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ModelsManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#998#1050#0" expanded="true" />
+            <element signature="e#1269#1315#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DrawGenericObjects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="81" selection-start-line="30" selection-start-column="81" selection-end-line="30" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ObjectTrees.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="721">
+          <caret line="58" column="1" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
+          <folding>
+            <element signature="e#390#426#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
