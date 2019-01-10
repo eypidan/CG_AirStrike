@@ -70,7 +70,7 @@ document.addEventListener('mousemove', (event) => {
     lookAt[0]=Math.cos(pitch)*Math.cos(yaw);
     lookAt[1]=Math.sin(pitch);
     lookAt[2]=Math.cos(pitch)*Math.sin(yaw);
-    console.log(pitch);
+    // console.log(pitch);
 
 }, false);
 

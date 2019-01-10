@@ -23,12 +23,8 @@
  */
 
 // Define OBJ path
-import env from './ModelObjects/env'  // !! 必须通过主文件来读取文本，所以，我只能把读好的env对象传进来
-import loCannons from './ModelObjects/LowerCannons';
-import upCannons from './ModelObjects/UpperCannons';
-import reside from './ModelObjects/reside';
-import track from './ModelObjects/Track';
-import rotatingItem from './ModelObjects/RotatingItem';
+import {env,loCannons,upCannons,reside,track,rotatingItem} from "./MainFunction.js";
+console.log(track)
 // Define Texture path
 import FLOOR_URL from  "./Textures/floor.jpg";
 import loCannonsTex from './Textures/LowerCannons.jpg';
