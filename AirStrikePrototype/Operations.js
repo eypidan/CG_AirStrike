@@ -9,9 +9,9 @@ var test=vec3.create(); //作为接受vec3.multiply的结果的一个向量而�
 var test2 = vec3.create();
 var test3 = vec3.create();
 var CameraSpeed = [0.2,0.2,0.2]
-var pitch=0,yaw=0; //设置视角的角度，水平面一个，垂直一个
+var pitch=0, yaw=0; //设置视角的角度，水平面一个，垂直一个
 
-const radin = 10; //随便设一个半径
+// const radin = 10; //随便设一个半径
 
 
 document.addEventListener('keydown', (event) => {

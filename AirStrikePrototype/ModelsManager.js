@@ -21,19 +21,48 @@
  * @param gl
  * @returns {{ExampleModel: {VertexBuffer: (AudioBuffer|WebGLBuffer), TextureBuffer: (AudioBuffer|WebGLBuffer), NormalBuffer: (AudioBuffer|WebGLBuffer), NumVertices: number}}}
  */
-import env from './env'  // !! 必须通过主文件来读取文本，所以，我只能把读好的env对象传进来
-import FLOOR_URL from  "./Textures/floor.jpg"
-console.log(env);
+
+// Define OBJ path
+import env from './ModelObjects/env'  // !! 必须通过主文件来读取文本，所以，我只能把读好的env对象传进来
+import loCannons from './ModelObjects/LowerCannons';
+import upCannons from './ModelObjects/UpperCannons';
+import reside from './ModelObjects/reside';
+import track from './ModelObjects/Track';
+import rotatingItem from './ModelObjects/RotatingItem';
+// Define Texture path
+import FLOOR_URL from  "./Textures/floor.jpg";
+import loCannonsTex from './Textures/LowerCannons.jpg';
+import upCannonsTex from './Textures/UpperCannons.jpg';
+import resideTex from  './Textures/reside.jpg';
+import trackTex from './Textures/Track.jpg';
+import rotatingItemTex from './Textures/RotatingItem.jpg';
+
 function getModelBufferCollection(gl)
 {
-    let envModel =getModelFromOBJ(env); ;
-    // let CarModel = getModelFromOBJ("./ModelObjects/CarModel.obj");
-    // let Whatever = getModelFromOBJ("./ModelObjects/whatever.obj");
+    let envModel = getModelFromOBJ(env);
+    let loCannonsModel = getModelFromOBJ(loCannons);
+    let upCannonsModel = getModelFromOBJ(upCannons);
+    let resideModel = getModelFromOBJ(reside);
+    let trackModel = getModelFromOBJ(track);
+    let rotatingItemModel = getModelFromOBJ(rotatingItem);
+
+    let loCannonsBuffer = getModelBuffer(gl, loCannonsModel);
+    let upCannonsBuffer = getModelBuffer(gl, upCannonsModel);
+    let resideBuffer = getModelBuffer(gl, resideModel);
+    let trackBuffer = getModelBuffer(gl, trackModel);
+    let rotatingItemBuffer = getModelBuffer(gl, rotatingItemModel);
+
     // console.log(envModel)
     let env_buffer = getModelBuffer(gl, envModel);
-    return{
-        envModelbuffer: env_buffer
+    return {
+        envModelbuffer:     env_buffer,
+        loCannonsBuffer:    loCannonsBuffer,
+        upCannonsBuffer:    upCannonsBuffer,
+        resideBuffer:       resideBuffer,
+        trackBuffer:        trackBuffer,
+        rotatingItemBuffer: rotatingItemBuffer
     }
+
 }
 
 /***
@@ -82,10 +111,19 @@ function getModelFromOBJ(Model){
 function GetTextureCollection(gl) {
     // 手动添加需要用到的纹理贴图
     let textureEnv = initTexture(gl, FLOOR_URL);
-    // let textureSkyBox = initTexture(gl, "./Textures/SkyBox.jpg");
+    let textureLoCannons = initTexture(gl, loCannonsTex);
+    let textureUpCannons = initTexture(gl, upCannonsTex);
+    let textureReside = initTexture(gl, resideTex);
+    let textureTrack = initTexture(gl, trackTex);
+    let textureRotatingItem = initTexture(gl, rotatingItemTex);
 
     return {
-        envTextureBuffer:textureEnv
+        envTextureBuffer:   textureEnv,
+        LoCannons:          textureLoCannons,
+        UpCannons:          textureUpCannons,
+        Reside:             textureReside,
+        Track:              textureTrack,
+        RotatingItem:       textureRotatingItem
     }
 }
 

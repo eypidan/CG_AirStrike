@@ -15,5 +15,5 @@ void main(void) {
     diffuse = lightColor * diff;
 
     vec4 Texturecolor = texture2D(uSampler, vTextureCoord);
-    gl_FragColor =Texturecolor*(vec4(diff)+ambient);
+    gl_FragColor =Texturecolor * (vec4(diff) + ambient);
 }

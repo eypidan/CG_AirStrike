@@ -10,16 +10,16 @@
  * * Texture:       对于具有纹理的物体，保存纹理对象。如果没有则该字段为`null`
  */
 import {mat4} from './gl-matrix.js';
+import {vec3} from './gl-matrix.js';
 
 class GenericObject{
-    constructor (Buffer, AdjObj, Texturebuffer)
+    constructor (Buffer, AdjObj, TextureBuffer)
     {
         this.Buffer = Buffer;
         this.MotionParameters = new MotionParameters();
         this.ModelMatrix = mat4.create();
-
         this.AdjObj = AdjObj;       // Adjacent Objects (Array)
-        this.Texture = Texturebuffer;
+        this.Texture = TextureBuffer;
     }
 }
 
@@ -42,11 +42,20 @@ function ObjectTrees(buffersCollection, texturesCollection){
 
     // let ObjectsSystems = CreateObjectsSystem(buffersCollection, texturesCollection);                // 太阳系1（机器人1）
     let EnvSystem = new GenericObject (buffersCollection.envModelbuffer,[],texturesCollection.envTextureBuffer); // 场景
+    mat4.scale(EnvSystem.ModelMatrix, EnvSystem.ModelMatrix, vec3.fromValues(3,3,3));
+
+    // Robot Main
+    let rotatingPart = new GenericObject(buffersCollection.rotatingItemBuffer, [], texturesCollection.RotatingItem);
+    let upCannons = new GenericObject(buffersCollection.upCannonsBuffer, [], texturesCollection.UpCannons);
+    let loCannons = new GenericObject(buffersCollection.loCannonsBuffer, [], texturesCollection.LoCannons);
+    let reside =    new GenericObject(buffersCollection.resideBuffer, [rotatingPart], texturesCollection.Reside);
+    let Robot = new GenericObject(buffersCollection.trackBuffer, [reside, upCannons, loCannons], texturesCollection.Track);
     // console.log(EnvSystem)
-    return{
+    return {
         // ObjectsSystems:ObjectsSystems,
-        EnvSystem:EnvSystem
-    } ;
+        EnvSystem:  EnvSystem,
+        Robot:      Robot
+    };
 }
 
 export {ObjectTrees};

@@ -15,6 +15,6 @@ void main(void) {
     gl_Position = uProjectionMatrix * uViewMatrix * uModelMatrix* aVertexPosition;
     vec4 modelPos = uModelMatrix * aVertexPosition;
     FragPos2 = modelPos.xyz / modelPos.w;
-    Normal = vec3(uModelMatrix*vec4(aNormal,0.0));
+    Normal = vec3(uModelMatrix * vec4(aNormal,0.0));
     vTextureCoord = aTextureCoord;
 }
