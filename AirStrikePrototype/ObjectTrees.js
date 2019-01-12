@@ -51,10 +51,13 @@ function ObjectTrees(buffersCollection, texturesCollection){
     let reside =    new GenericObject(buffersCollection.resideBuffer, [rotatingPart], texturesCollection.Reside);
     let Robot = new GenericObject(buffersCollection.trackBuffer, [reside, upCannons, loCannons], texturesCollection.Track);
     // console.log(EnvSystem)
+    let SkyBox = new GenericObject(buffersCollection.skyBoxBuffer, [], texturesCollection.SkyBox);
+
     return {
         // ObjectsSystems:ObjectsSystems,
         EnvSystem:  EnvSystem,
-        Robot:      Robot
+        Robot:      Robot,
+        SkyBox:     SkyBox
     };
 }
 

@@ -15,6 +15,7 @@ const upCannons =JSON.parse(fs.readFileSync ('./ModelObjects/UpperCannons.json',
 const reside = JSON.parse(fs.readFileSync('./ModelObjects/reside.json', 'utf8'));
 const track = JSON.parse(fs.readFileSync('./ModelObjects/Track.json', 'utf8'));
 const rotatingItem =JSON.parse(fs.readFileSync( './ModelObjects/RotatingItem.json', 'utf8'));
+const skyBox =JSON.parse(fs.readFileSync( './ModelObjects/SkyBox.json', 'utf8'));
 
 //这里不用理解，就是直接在js 里 执行 main（）而已，不能像原来那样在index.html onload来执行 ，注意。
 setTimeout(()=>{
@@ -120,5 +121,5 @@ function GenerateProgramInfo(gl, webGLPrograms) {
 
     return programInfo;
 }
-export{env,loCannons,upCannons,reside,track,rotatingItem}
+export{env,loCannons,upCannons,reside,track,rotatingItem,skyBox}
 
