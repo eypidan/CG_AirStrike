@@ -10532,6 +10532,9 @@ function ObjectTrees(buffersCollection, texturesCollection) {
   var Robot = new GenericObject(buffersCollection.trackBuffer, [reside, upCannons, loCannons], texturesCollection.Track); // console.log(EnvSystem)
 
   var SkyBox = new GenericObject(buffersCollection.skyBoxBuffer, [], texturesCollection.SkyBox);
+
+  _glMatrix.mat4.scale(SkyBox.ModelMatrix, SkyBox.ModelMatrix, _glMatrix.vec3.fromValues(50, 50, 50));
+
   return {
     // ObjectsSystems:ObjectsSystems,
     EnvSystem: EnvSystem,
@@ -10703,7 +10706,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62412" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57681" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
