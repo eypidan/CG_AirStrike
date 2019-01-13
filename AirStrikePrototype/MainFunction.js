@@ -22,7 +22,7 @@ const rotatingItem =JSON.parse(fs.readFileSync( './ModelObjects/RotatingItem.jso
 
 //这里不用理解，就是直接在js 里 执行 main（）而已，不能像原来那样在index.html onload来执行 ，注意。
 setTimeout(()=>{
-    console.log("AirStrike Alert!");
+    // console.log("AirStrike Alert!");
     main();
 }, 100);
 
@@ -65,11 +65,13 @@ function main() {
         // console.log(lookAtX);
         doMotion(Objects.Robot, deltaTime);
 
+
         gl.disable(gl.DEPTH_TEST); // 画天空盒时要关闭深度测试
         drawSkyBox(gl, skybox, skyboxProgram, uProjection);
 
         gl.enable(gl.DEPTH_TEST);
         Draw(gl, ProgramInfo, Objects);
+        updateLight(gl, ProgramInfo);
 
         requestAnimationFrame(render);
     }
@@ -124,11 +126,39 @@ function GenerateProgramInfo(gl, webGLPrograms) {
             projectionMatrix: gl.getUniformLocation(webGLPrograms, 'uProjectionMatrix'),
             ViewMatrix: gl.getUniformLocation(webGLPrograms, 'uViewMatrix'),
             ModelMatrix: gl.getUniformLocation(webGLPrograms, 'uModelMatrix'),
-            Sampler: gl.getUniformLocation(webGLPrograms, 'uSampler')
+            Sampler: gl.getUniformLocation(webGLPrograms, 'uSampler'),
+            ambientLight: gl.getUniformLocation(webGLPrograms, 'ambientLight'),
+            lightColor: gl.getUniformLocation(webGLPrograms, 'lightColor'),
+            lightDirection: gl.getUniformLocation(webGLPrograms, 'lightDirection')
         },
     };
 
     return programInfo;
 }
+
+function updateLight(gl, programInfo)
+{
+    gl.uniform4f(
+        programInfo.uniformLocations.ambientLight,
+        parseFloat(document.getElementById("ambientLightR").value),
+        parseFloat(document.getElementById("ambientLightG").value),
+        parseFloat(document.getElementById("ambientLightB").value),
+        1
+    );
+    gl.uniform4f(
+        programInfo.uniformLocations.lightColor,
+        parseFloat(document.getElementById("directionalLightR").value),
+        parseFloat(document.getElementById("directionalLightG").value),
+        parseFloat(document.getElementById("directionalLightB").value),
+        0
+    );
+    gl.uniform3f(
+        programInfo.uniformLocations.lightDirection,
+        parseFloat(document.getElementById("directionalLightX").value),
+        parseFloat(document.getElementById("directionalLightY").value),
+        parseFloat(document.getElementById("directionalLightZ").value)
+    );
+}
+
 export{env,loCannons,upCannons,reside,track,rotatingItem}
 

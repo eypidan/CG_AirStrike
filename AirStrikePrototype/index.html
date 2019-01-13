@@ -7,6 +7,7 @@
     <title>AirStrike Prototype Display</title>
 
     <script type="text/javascript" src="./MainFunction.js"></script>
+    </script>
 
     <style>
         body{
@@ -28,6 +29,55 @@
     <canvas id="glcanvas" width="800" height="600">
         Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.
     </canvas>
-    
+    <br>
+<!--    <h2>Choose lights to use:</h2>
+     <input id="ambientLight" checked="checked" type="checkbox"> Ambient Light<br>
+    <input id="directionalLight" checked="checked" type="checkbox"> Direntional Light<br>
+    <input id="pointLight" checked="checked" type="checkbox"> Point Light<br>
+ -->
+    <h2>Ambient Light:</h2>
+    <table style="border: 0; padding: 10px;">
+        <tbody>
+        <tr>
+            <td><b>Color:</b>
+            </td><td>R: <input id="ambientLightR" value="0.4" type="text">
+            </td><td>G: <input id="ambientLightG" value="0.4" type="text">
+            </td><td>B: <input id="ambientLightB" value="0.4" type="text">
+        </td>
+        </tbody>
+    </table>
+    <h2>Directional Light:</h2>
+    <table style="border: 0; padding: 10px;">
+        <tbody>
+        <tr>
+            <td><b>Position: </b>
+            </td><td>X: <input id="directionalLightX" value="-0.5" type="text">
+            </td><td>Y: <input id="directionalLightY" value="-0.5" type="text">
+            </td><td>Z: <input id="directionalLightZ" value="-0.5" type="text">
+        </td></tr>
+        <tr>
+            <td><b>Color:</b>
+            </td><td>R: <input id="directionalLightR" value="1.0" type="text">
+            </td><td>G: <input id="directionalLightG" value="1.0" type="text">
+            </td><td>B: <input id="directionalLightB" value="1.0" type="text">
+        </td></tr>
+    </tbody></table>
+<!--     <h2>Point Light:</h2>
+    <table style="border: 0; padding: 10px;">
+        <tbody>
+        <tr>
+            <td><b>Position: </b>
+            </td><td>X: <input id="pointLightX" value="-1.0" type="text">
+            </td><td>Y: <input id="pointLightY" value="0.0" type="text">
+            </td><td>Z: <input id="pointLightZ" value="-1.0" type="text">
+        </td></tr>
+        <tr>
+            <td><b>Color:</b>
+            </td><td>R: <input id="pointLightR" value="0.1" type="text">
+            </td><td>G: <input id="pointLightG" value="0.1" type="text">
+            </td><td>B: <input id="pointLightB" value="0.9" type="text">
+        </td></tr>
+    </tbody></table> -->
+
 </body>
 </html>
