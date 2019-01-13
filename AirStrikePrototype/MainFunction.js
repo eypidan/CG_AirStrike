@@ -4,6 +4,7 @@ import fs from 'fs'
 import {getModelBufferCollection,GetTextureCollection} from './ModelsManager.js';
 import {Draw} from './DrawGenericObjects.js'
 import {ObjectTrees} from './ObjectTrees';
+import {doMotion} from "./Motion";
 
 const vsSource = fs.readFileSync('./vsSource.glsl', 'utf8');
 
@@ -52,7 +53,7 @@ function main() {
         const deltaTime = now - then;
         then = now;
         // console.log(lookAtX);
-        // doMotion(Objects, deltaTime);
+        doMotion(Objects.Robot, deltaTime);
 
         gl.clearColor(1.0, 1.0, 1.0, 1.0);
         gl.clearDepth(1.0);

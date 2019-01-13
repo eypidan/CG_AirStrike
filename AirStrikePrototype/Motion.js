@@ -1,3 +1,6 @@
+import {lookAt, cameraUP, Target, eye, aDown, sDown, dDown, wDown} from "./Operations";
+import {vec3, mat4} from './gl-matrix'
+
 let directionalTheta = 90;  // 平面朝向参数角度（角度制）
 
 function MoveForward(Object, deltaTime)
@@ -23,8 +26,10 @@ function MoveForward(Object, deltaTime)
     let dz = distance * Math.sin(directionalTheta * Math.PI / 180);
 
     // 视角跟踪
-    eyeX += dx; eyeZ += dz;
-    lookAtX += dx; lookAtZ += dz;
+    eye[0] += dx; eye[2] += dz;
+    lookAt[0] += dx; lookAt[2]+= dz;
+    // eyeX += dx; eyeZ += dz;
+    // lookAtX += dx; lookAtZ += dz;
 
     Object.ModelMatrix = mat4.translate(
         Object.ModelMatrix, Object.ModelMatrix,
@@ -63,3 +68,5 @@ function doMotion(Objects, deltaTime) {
     RootRotate(root, deltaTime);
     MoveForward(root, deltaTime);
 }
+
+export {doMotion};

@@ -104,7 +104,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/_empty.js":[function(require,module,exports) {
+})({"../../../../../../../../usr/local/lib/node_modules/parcel/src/builtins/_empty.js":[function(require,module,exports) {
 
 },{}],"Textures/floor.jpg":[function(require,module,exports) {
 module.exports = "/floor.33debc88.jpg";
@@ -8184,18 +8184,63 @@ THE SOFTWARE.
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.cameraUP = exports.eye = exports.lookAt = void 0;
+exports.wDown = exports.dDown = exports.sDown = exports.aDown = exports.Target = exports.cameraUP = exports.eye = exports.lookAt = void 0;
 
 var _glMatrix = require("./gl-matrix.js");
 
-/// Operations.js
-/// This file is about the mechanism that operates th
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 var lookAt = [0, 0, -1];
 exports.lookAt = lookAt;
 var eye = [0, 2, 3];
 exports.eye = eye;
-var cameraUP = [0, 1, 0];
+var cameraUP = [0, 1, 0]; // 操作对象
+// 0 for scene control, 1-3 for robot control
+
 exports.cameraUP = cameraUP;
+var Target = 0; // 用于切换视角后恢复上一组视角。
+
+exports.Target = Target;
+
+var camera =
+/*#__PURE__*/
+function () {
+  function camera() {
+    _classCallCheck(this, camera);
+
+    this.lookAt = [0, 0, 0];
+    this.eye = [0, 1, 1];
+    this.cameraUP = [0, 1, 0];
+  }
+
+  _createClass(camera, [{
+    key: "restore",
+    value: function restore() {
+      exports.lookAt = lookAt = this.lookAt;
+      exports.eye = eye = this.eye;
+      exports.cameraUP = cameraUP = this.cameraUP;
+    }
+  }, {
+    key: "store",
+    value: function store() {
+      this.lookAt = lookAt;
+      this.eye = eye;
+      this.cameraUP = cameraUP;
+    }
+  }]);
+
+  return camera;
+}();
+
+var cameras = [new camera(), // camera 0 for the scene navigation
+new camera(), // camera 1 for navigation of robot 1
+new camera(), // camera 2 for navigation of robot 1
+new camera() // camera 3 for navigation of robot 1
+];
 
 var test = _glMatrix.vec3.create(); //作为接受vec3.multiply的结果的一个向量而已
 
@@ -8207,36 +8252,98 @@ var test3 = _glMatrix.vec3.create();
 var CameraSpeed = [0.2, 0.2, 0.2];
 var pitch = 0,
     yaw = 0; //设置视角的角度，水平面一个，垂直一个
-// const radin = 10; //随便设一个半径
 
+var aDown = false;
+exports.aDown = aDown;
+var sDown = false;
+exports.sDown = sDown;
+var dDown = false;
+exports.dDown = dDown;
+var wDown = false;
+exports.wDown = wDown;
 document.addEventListener('keydown', function (event) {
-  var keyName = event.key;
+  var keyName = event.key; // Switching Target Mode
 
-  if (keyName === 'a') {
-    _glMatrix.vec3.cross(test2, eye, cameraUP);
+  if (keyName === '0' || keyName === '1' || keyName === '2' || keyName === '3') {
+    // 目前Target还是上次的值。
+    // 将上一个Target最后的摄像机向量放到本地数组中。
+    cameras[Target].store(); // 恢复上一次该物体的相机参数，并从此开始
 
-    _glMatrix.vec3.add(eye, eye, _glMatrix.vec3.multiply(test3, test2, CameraSpeed));
-
+    exports.Target = Target = keyName - '0';
+    cameras[Target].restore();
     return;
   }
 
+  if (Target == 0) {
+    if (keyName === 'a') {
+      _glMatrix.vec3.cross(test2, eye, cameraUP);
+
+      _glMatrix.vec3.add(eye, eye, _glMatrix.vec3.multiply(test3, test2, CameraSpeed));
+
+      return;
+    }
+
+    if (keyName === 'd') {
+      _glMatrix.vec3.cross(test2, eye, cameraUP);
+
+      _glMatrix.vec3.sub(eye, eye, _glMatrix.vec3.multiply(test3, test2, CameraSpeed));
+
+      return;
+    }
+
+    if (keyName === 'w') {
+      _glMatrix.vec3.add(eye, eye, _glMatrix.vec3.multiply(test, lookAt, CameraSpeed));
+
+      return;
+    }
+
+    if (keyName === 's') {
+      _glMatrix.vec3.sub(eye, eye, _glMatrix.vec3.multiply(test, lookAt, CameraSpeed));
+
+      return;
+    }
+  } else if (Target >= 1 && Target <= 3) {
+    if (keyName === 'd') {
+      exports.dDown = dDown = true;
+      return;
+    }
+
+    if (keyName === 'a') {
+      exports.aDown = aDown = true;
+      return;
+    }
+
+    if (keyName === 'w') {
+      exports.wDown = wDown = true;
+      return;
+    }
+
+    if (keyName === 's') {
+      exports.sDown = sDown = true;
+      return;
+    }
+  }
+}, false);
+document.addEventListener('keyup', function (event) {
+  var keyName = event.key;
+
   if (keyName === 'd') {
-    _glMatrix.vec3.cross(test2, eye, cameraUP);
+    exports.dDown = dDown = false;
+    return;
+  }
 
-    _glMatrix.vec3.sub(eye, eye, _glMatrix.vec3.multiply(test3, test2, CameraSpeed));
-
+  if (keyName === 'a') {
+    exports.aDown = aDown = false;
     return;
   }
 
   if (keyName === 'w') {
-    _glMatrix.vec3.add(eye, eye, _glMatrix.vec3.multiply(test, lookAt, CameraSpeed));
-
+    exports.wDown = wDown = false;
     return;
   }
 
   if (keyName === 's') {
-    _glMatrix.vec3.sub(eye, eye, _glMatrix.vec3.multiply(test, lookAt, CameraSpeed));
-
+    exports.sDown = sDown = false;
     return;
   }
 }, false);
@@ -8438,7 +8545,7 @@ function DrawGenericCube(gl, programInfo, Objects, ProjectionMatrix, ViewMatrix,
     }
   }
 }
-},{"./gl-matrix.js":"gl-matrix.js","./operations.js":"operations.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/base64-js/index.js":[function(require,module,exports) {
+},{"./gl-matrix.js":"gl-matrix.js","./operations.js":"operations.js"}],"../../../../../../../../usr/local/lib/node_modules/parcel/node_modules/base64-js/index.js":[function(require,module,exports) {
 'use strict'
 
 exports.byteLength = byteLength
@@ -8591,7 +8698,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/ieee754/index.js":[function(require,module,exports) {
+},{}],"../../../../../../../../usr/local/lib/node_modules/parcel/node_modules/ieee754/index.js":[function(require,module,exports) {
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = (nBytes * 8) - mLen - 1
@@ -8677,14 +8784,14 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/isarray/index.js":[function(require,module,exports) {
+},{}],"../../../../../../../../usr/local/lib/node_modules/parcel/node_modules/isarray/index.js":[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/buffer/index.js":[function(require,module,exports) {
+},{}],"../../../../../../../../usr/local/lib/node_modules/parcel/node_modules/buffer/index.js":[function(require,module,exports) {
 
 var global = arguments[3];
 /*!
@@ -10477,7 +10584,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":"../../../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/base64-js/index.js","ieee754":"../../../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/ieee754/index.js","isarray":"../../../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/isarray/index.js","buffer":"../../../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"ObjectTrees.js":[function(require,module,exports) {
+},{"base64-js":"../../../../../../../../usr/local/lib/node_modules/parcel/node_modules/base64-js/index.js","ieee754":"../../../../../../../../usr/local/lib/node_modules/parcel/node_modules/ieee754/index.js","isarray":"../../../../../../../../usr/local/lib/node_modules/parcel/node_modules/isarray/index.js","buffer":"../../../../../../../../usr/local/lib/node_modules/parcel/node_modules/buffer/index.js"}],"ObjectTrees.js":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 "use strict";
 
@@ -10542,7 +10649,268 @@ function ObjectTrees(buffersCollection, texturesCollection) {
     SkyBox: SkyBox
   };
 }
-},{"./gl-matrix.js":"gl-matrix.js","buffer":"../../../../../../usr/local/lib/node_modules/parcel-bundler/node_modules/buffer/index.js"}],"MainFunction.js":[function(require,module,exports) {
+},{"./gl-matrix.js":"gl-matrix.js","buffer":"../../../../../../../../usr/local/lib/node_modules/parcel/node_modules/buffer/index.js"}],"Operations.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.wDown = exports.dDown = exports.sDown = exports.aDown = exports.Target = exports.cameraUP = exports.eye = exports.lookAt = void 0;
+
+var _glMatrix = require("./gl-matrix.js");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var lookAt = [0, 0, -1];
+exports.lookAt = lookAt;
+var eye = [0, 2, 3];
+exports.eye = eye;
+var cameraUP = [0, 1, 0]; // 操作对象
+// 0 for scene control, 1-3 for robot control
+
+exports.cameraUP = cameraUP;
+var Target = 0; // 用于切换视角后恢复上一组视角。
+
+exports.Target = Target;
+
+var camera =
+/*#__PURE__*/
+function () {
+  function camera() {
+    _classCallCheck(this, camera);
+
+    this.lookAt = [0, 0, 0];
+    this.eye = [0, 1, 1];
+    this.cameraUP = [0, 1, 0];
+  }
+
+  _createClass(camera, [{
+    key: "restore",
+    value: function restore() {
+      exports.lookAt = lookAt = this.lookAt;
+      exports.eye = eye = this.eye;
+      exports.cameraUP = cameraUP = this.cameraUP;
+    }
+  }, {
+    key: "store",
+    value: function store() {
+      this.lookAt = lookAt;
+      this.eye = eye;
+      this.cameraUP = cameraUP;
+    }
+  }]);
+
+  return camera;
+}();
+
+var cameras = [new camera(), // camera 0 for the scene navigation
+new camera(), // camera 1 for navigation of robot 1
+new camera(), // camera 2 for navigation of robot 1
+new camera() // camera 3 for navigation of robot 1
+];
+
+var test = _glMatrix.vec3.create(); //作为接受vec3.multiply的结果的一个向量而已
+
+
+var test2 = _glMatrix.vec3.create();
+
+var test3 = _glMatrix.vec3.create();
+
+var CameraSpeed = [0.2, 0.2, 0.2];
+var pitch = 0,
+    yaw = 0; //设置视角的角度，水平面一个，垂直一个
+
+var aDown = false;
+exports.aDown = aDown;
+var sDown = false;
+exports.sDown = sDown;
+var dDown = false;
+exports.dDown = dDown;
+var wDown = false;
+exports.wDown = wDown;
+document.addEventListener('keydown', function (event) {
+  var keyName = event.key; // Switching Target Mode
+
+  if (keyName === '0' || keyName === '1' || keyName === '2' || keyName === '3') {
+    // 目前Target还是上次的值。
+    // 将上一个Target最后的摄像机向量放到本地数组中。
+    cameras[Target].store(); // 恢复上一次该物体的相机参数，并从此开始
+
+    exports.Target = Target = keyName - '0';
+    cameras[Target].restore();
+    return;
+  }
+
+  if (Target == 0) {
+    if (keyName === 'a') {
+      _glMatrix.vec3.cross(test2, eye, cameraUP);
+
+      _glMatrix.vec3.add(eye, eye, _glMatrix.vec3.multiply(test3, test2, CameraSpeed));
+
+      return;
+    }
+
+    if (keyName === 'd') {
+      _glMatrix.vec3.cross(test2, eye, cameraUP);
+
+      _glMatrix.vec3.sub(eye, eye, _glMatrix.vec3.multiply(test3, test2, CameraSpeed));
+
+      return;
+    }
+
+    if (keyName === 'w') {
+      _glMatrix.vec3.add(eye, eye, _glMatrix.vec3.multiply(test, lookAt, CameraSpeed));
+
+      return;
+    }
+
+    if (keyName === 's') {
+      _glMatrix.vec3.sub(eye, eye, _glMatrix.vec3.multiply(test, lookAt, CameraSpeed));
+
+      return;
+    }
+  } else if (Target >= 1 && Target <= 3) {
+    if (keyName === 'd') {
+      exports.dDown = dDown = true;
+      return;
+    }
+
+    if (keyName === 'a') {
+      exports.aDown = aDown = true;
+      return;
+    }
+
+    if (keyName === 'w') {
+      exports.wDown = wDown = true;
+      return;
+    }
+
+    if (keyName === 's') {
+      exports.sDown = sDown = true;
+      return;
+    }
+  }
+}, false);
+document.addEventListener('keyup', function (event) {
+  var keyName = event.key;
+
+  if (keyName === 'd') {
+    exports.dDown = dDown = false;
+    return;
+  }
+
+  if (keyName === 'a') {
+    exports.aDown = aDown = false;
+    return;
+  }
+
+  if (keyName === 'w') {
+    exports.wDown = wDown = false;
+    return;
+  }
+
+  if (keyName === 's') {
+    exports.sDown = sDown = false;
+    return;
+  }
+}, false);
+var last_position = {};
+document.addEventListener('mousemove', function (event) {
+  if (typeof last_position.x != "undefined") {
+    var deltaX = -last_position.x + event.clientX,
+        deltaY = -last_position.y + event.clientY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0) {
+      yaw += 0.1;
+    } else if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0) {
+      yaw -= 0.1;
+    } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0) {
+      pitch -= 0.1;
+    } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY < 0) {
+      pitch += 0.1;
+    }
+
+    if (pitch > Math.PI / 2 - 0.01) pitch = Math.PI / 2 - 0.01;
+    if (pitch < -Math.PI / 2 + 0.01) pitch = -Math.PI / 2 + 0.01;
+  }
+
+  last_position = {
+    x: event.clientX,
+    y: event.clientY
+  };
+  lookAt[0] = Math.cos(pitch) * Math.cos(yaw);
+  lookAt[1] = Math.sin(pitch);
+  lookAt[2] = Math.cos(pitch) * Math.sin(yaw); // console.log(pitch);
+}, false);
+},{"./gl-matrix.js":"gl-matrix.js"}],"Motion.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.doMotion = doMotion;
+
+var _Operations = require("./Operations");
+
+var _glMatrix = require("./gl-matrix");
+
+var directionalTheta = 90; // 平面朝向参数角度（角度制）
+
+function MoveForward(Object, deltaTime) {
+  // 按住w加速，直到上限，不按住减速，直到下限。
+  if (_Operations.wDown == false) {
+    // 减速
+    if (Object.MotionParameters.Speed > 0.00) {
+      Object.MotionParameters.Speed -= 2 * deltaTime;
+      if (Object.MotionParameters.Speed < 0.00) Object.MotionParameters.Speed = 0.00;
+    }
+  } else {
+    // Accelerating
+    if (Object.MotionParameters.Speed < Object.MotionParameters.MaxSpeed) {
+      Object.MotionParameters.Speed += 1 * deltaTime;
+    }
+  }
+
+  var distance = Object.MotionParameters.Speed * deltaTime;
+  var dx = distance * Math.cos(directionalTheta * Math.PI / 180);
+  var dz = distance * Math.sin(directionalTheta * Math.PI / 180); // 视角跟踪
+
+  _Operations.eye[0] += dx;
+  _Operations.eye[2] += dz;
+  _Operations.lookAt[0] += dx;
+  _Operations.lookAt[2] += dz; // eyeX += dx; eyeZ += dz;
+  // lookAtX += dx; lookAtZ += dz;
+
+  Object.ModelMatrix = _glMatrix.mat4.translate(Object.ModelMatrix, Object.ModelMatrix, _glMatrix.vec3.fromValues(0, 0, Object.MotionParameters.Speed * deltaTime));
+}
+
+function RootRotate(root, deltaTime) {
+  // 同时按下或者都不按下
+  if (!_Operations.dDown && !_Operations.aDown || _Operations.dDown && _Operations.aDown) return;
+  var dTheta = 90 * deltaTime; // 每秒转90度...
+
+  if (_Operations.aDown) // 逆时针转
+    {
+      directionalTheta += dTheta;
+    } else if (_Operations.dDown) {
+    dTheta = -dTheta;
+    directionalTheta += dTheta;
+  }
+
+  directionalTheta = directionalTheta % 360;
+  root.ModelMatrix = _glMatrix.mat4.rotate(root.ModelMatrix, root.ModelMatrix, dTheta * Math.PI / 180, _glMatrix.vec3.fromValues(0, 1, 0));
+}
+
+function doMotion(Objects, deltaTime) {
+  var root = Objects;
+  RootRotate(root, deltaTime);
+  MoveForward(root, deltaTime);
+}
+},{"./Operations":"Operations.js","./gl-matrix":"gl-matrix.js"}],"MainFunction.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10557,6 +10925,8 @@ var _ModelsManager = require("./ModelsManager.js");
 var _DrawGenericObjects = require("./DrawGenericObjects.js");
 
 var _ObjectTrees = require("./ObjectTrees");
+
+var _Motion = require("./Motion");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10613,8 +10983,8 @@ function main() {
 
     var deltaTime = now - then;
     then = now; // console.log(lookAtX);
-    // doMotion(Objects, deltaTime);
 
+    (0, _Motion.doMotion)(Objects.Robot, deltaTime);
     gl.clearColor(1.0, 1.0, 1.0, 1.0);
     gl.clearDepth(1.0);
     gl.enable(gl.DEPTH_TEST);
@@ -10679,7 +11049,7 @@ function GenerateProgramInfo(gl, webGLPrograms) {
   };
   return programInfo;
 }
-},{"fs":"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/_empty.js","./ModelsManager.js":"ModelsManager.js","./DrawGenericObjects.js":"DrawGenericObjects.js","./ObjectTrees":"ObjectTrees.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"fs":"../../../../../../../../usr/local/lib/node_modules/parcel/src/builtins/_empty.js","./ModelsManager.js":"ModelsManager.js","./DrawGenericObjects.js":"DrawGenericObjects.js","./ObjectTrees":"ObjectTrees.js","./Motion":"Motion.js"}],"../../../../../../../../usr/local/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -10706,7 +11076,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57681" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59850" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -10848,5 +11218,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","MainFunction.js"], null)
+},{}]},{},["../../../../../../../../usr/local/lib/node_modules/parcel/src/builtins/hmr-runtime.js","MainFunction.js"], null)
 //# sourceMappingURL=/MainFunction.1c995849.map
