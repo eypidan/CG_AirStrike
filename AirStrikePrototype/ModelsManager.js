@@ -23,7 +23,7 @@
  */
 
 // Define OBJ path
-import {env,loCannons,upCannons,reside,track,rotatingItem,skyBox} from "./MainFunction.js";
+import {env,loCannons,upCannons,reside,track,rotatingItem} from "./MainFunction.js";
 console.log(track)
 // Define Texture path
 import FLOOR_URL from  "./Textures/floor.jpg";
@@ -32,12 +32,6 @@ import upCannonsTex from './Textures/UpperCannons.jpg';
 import resideTex from  './Textures/reside.jpg';
 import trackTex from './Textures/Track.jpg';
 import rotatingItemTex from './Textures/RotatingItem.jpg';
-import skynegx1 from './Textures/skynegx1.png';
-import skynegy1 from './Textures/skynegy1.png';
-import skynegz1 from './Textures/skynegz1.png';
-import skyposx1 from './Textures/skyposx1.png';
-import skyposy1 from './Textures/skyposy1.png';
-import skyposz1 from './Textures/skyposz1.png';
 
 function getModelBufferCollection(gl)
 {
@@ -47,7 +41,6 @@ function getModelBufferCollection(gl)
     let resideModel = getModelFromOBJ(reside);
     let trackModel = getModelFromOBJ(track);
     let rotatingItemModel = getModelFromOBJ(rotatingItem);
-    let skyBoxModel = getModelFromOBJ(skyBox);
 
     let loCannonsBuffer = getModelBuffer(gl, loCannonsModel);
     let upCannonsBuffer = getModelBuffer(gl, upCannonsModel);
@@ -57,15 +50,13 @@ function getModelBufferCollection(gl)
 
     // console.log(envModel)
     let env_buffer = getModelBuffer(gl, envModel);
-    let skyBoxBuffer = getModelBuffer(gl, skyBoxModel);
     return {
         envModelbuffer:     env_buffer,
         loCannonsBuffer:    loCannonsBuffer,
         upCannonsBuffer:    upCannonsBuffer,
         resideBuffer:       resideBuffer,
         trackBuffer:        trackBuffer,
-        rotatingItemBuffer: rotatingItemBuffer,
-        skyBoxBuffer:       skyBoxBuffer
+        rotatingItemBuffer: rotatingItemBuffer
     }
 
 }
@@ -121,7 +112,6 @@ function GetTextureCollection(gl) {
     let textureReside = initTexture(gl, resideTex);
     let textureTrack = initTexture(gl, trackTex);
     let textureRotatingItem = initTexture(gl, rotatingItemTex);
-    let textureSkyBox = initTextureCube(gl, [skyposx1, skynegx1, skyposy1, skynegy1, skyposz1, skynegz1]);
 
     return {
         envTextureBuffer:   textureEnv,
@@ -129,8 +119,7 @@ function GetTextureCollection(gl) {
         UpCannons:          textureUpCannons,
         Reside:             textureReside,
         Track:              textureTrack,
-        RotatingItem:       textureRotatingItem,
-        SkyBox:             textureSkyBox
+        RotatingItem:       textureRotatingItem
     }
 }
 
@@ -175,42 +164,5 @@ function initTexture(gl, url){
 function isPowerOf2(value) {
     return (value & (value - 1)) == 0;
 }
-function initTextureCube(gl, urls) {
-    var imgCount = 0;
-    var img = new Array(6);
-    const level = 0;
-    const internalFormat = gl.RGBA;
-    const width = 1;
-    const height = 1;
-    const border = 0;
-    const srcFormat = gl.RGBA;
-    const srcType = gl.UNSIGNED_BYTE;
-    var texture;
 
-    for (var i = 0; i < 6; i++) {
-        img[i] = new Image();
-        img[i].onload = function() {
-            imgCount++;
-            if (imgCount == 6) {
-                texture = gl.createTexture();
-                gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
-
-                var targets = [
-                    gl.TEXTURE_CUBE_MAP_POSITIVE_X, gl.TEXTURE_CUBE_MAP_NEGATIVE_X, 
-                    gl.TEXTURE_CUBE_MAP_POSITIVE_Y, gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, 
-                    gl.TEXTURE_CUBE_MAP_POSITIVE_Z, gl.TEXTURE_CUBE_MAP_NEGATIVE_Z 
-                        ];
-
-                for (var j = 0; j < 6; j++) {
-                    gl.texImage2D(targets[j], level, internalFormat, srcFormat, srcType, img[j]);
-                    gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-                    gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-                }
-                gl.generateMipmap(gl.TEXTURE_CUBE_MAP);
-            }
-        }
-        img[i].src = urls[i];
-    }
-    return texture;
-}
 export {getModelBufferCollection,GetTextureCollection};

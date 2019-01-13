@@ -5,10 +5,13 @@ import {getModelBufferCollection,GetTextureCollection} from './ModelsManager.js'
 import {Draw} from './DrawGenericObjects.js'
 import {ObjectTrees} from './ObjectTrees';
 import {doMotion} from "./Motion";
+import {loadTextureCube,createCube,initCube,drawSkyBox} from "./SkyBox.js";
 
 const vsSource = fs.readFileSync('./vsSource.glsl', 'utf8');
+const vsSource_skyBox = fs.readFileSync('./vsSource_skyBox.glsl', 'utf8');
 
 const fsSource = fs.readFileSync('./fsSource.glsl', 'utf8');
+const fsSource_skyBox = fs.readFileSync('./fsSource_skyBox.glsl', 'utf8');
 
 const env = JSON.parse(fs.readFileSync('./ModelObjects/env.json', 'utf8'))  // !! 必须通过主文件来读取文本，所以，我只能把读好的env对象传进来
 const loCannons = JSON.parse(fs.readFileSync('./ModelObjects/LowerCannons.json', 'utf8'));
@@ -16,7 +19,6 @@ const upCannons =JSON.parse(fs.readFileSync ('./ModelObjects/UpperCannons.json',
 const reside = JSON.parse(fs.readFileSync('./ModelObjects/reside.json', 'utf8'));
 const track = JSON.parse(fs.readFileSync('./ModelObjects/Track.json', 'utf8'));
 const rotatingItem =JSON.parse(fs.readFileSync( './ModelObjects/RotatingItem.json', 'utf8'));
-const skyBox =JSON.parse(fs.readFileSync( './ModelObjects/SkyBox.json', 'utf8'));
 
 //这里不用理解，就是直接在js 里 执行 main（）而已，不能像原来那样在index.html onload来执行 ，注意。
 setTimeout(()=>{
@@ -45,7 +47,15 @@ function main() {
 
     let Objects = ObjectTrees(ModelBufferCollection, TextureCollection);
 
-    // console.log(ModelBufferCollection);
+    var skyboxProgram = initShaderProgram(gl, vsSource_skyBox, fsSource_skyBox);
+    var aCoords =  gl.getAttribLocation(skyboxProgram, "coords");
+    var uViewMatrix = gl.getUniformLocation(skyboxProgram, "view");
+    var uProjection = gl.getUniformLocation(skyboxProgram, "projection");
+
+    gl.enableVertexAttribArray(aCoords);
+    var cube = createCube(200);
+    var skybox = initCube(gl, cube, aCoords, uViewMatrix);
+    loadTextureCube(gl, skybox, skyboxProgram, uProjection);
 
     let then = 0;
     function render(now) {
@@ -55,12 +65,10 @@ function main() {
         // console.log(lookAtX);
         doMotion(Objects.Robot, deltaTime);
 
-        gl.clearColor(1.0, 1.0, 1.0, 1.0);
-        gl.clearDepth(1.0);
-        gl.enable(gl.DEPTH_TEST);
-        gl.depthFunc(gl.LEQUAL);
-        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.disable(gl.DEPTH_TEST); // 画天空盒时要关闭深度测试
+        drawSkyBox(gl, skybox, skyboxProgram, uProjection);
 
+        gl.enable(gl.DEPTH_TEST);
         Draw(gl, ProgramInfo, Objects);
 
         requestAnimationFrame(render);
@@ -122,5 +130,5 @@ function GenerateProgramInfo(gl, webGLPrograms) {
 
     return programInfo;
 }
-export{env,loCannons,upCannons,reside,track,rotatingItem,skyBox}
+export{env,loCannons,upCannons,reside,track,rotatingItem}
 
