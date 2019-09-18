@@ -10,19 +10,19 @@
 
 - (DEBUG) After install parcel, run
 
-  ```shell
+```shell
   npm install -g parcel
   parcel index.html
-  ```
+```
 
 - Build
 
-	```shell
+```shell
    npm install -g http-server
    parcel build index.html
- cd dist
+   cd dist
    http-server
-  ```
+```
   
 
 
